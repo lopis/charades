@@ -1,5 +1,5 @@
 {
-  "name": "react-shared",
+  "name": "charades",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -15,7 +15,8 @@
     "html-webpack-plugin": "^2.30.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-native": "0.49.5"
+    "react-native": "0.49.5",
+    "react-redux": "^5.0.7"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
