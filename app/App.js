@@ -1,12 +1,13 @@
-import React, { PureComponent } from 'react'
-import mainMenu from './pages/lobby/mainMenu'
+import { connect } from 'react-redux'
+import AppFrame from './layout/basic/AppFrame'
 
-export default class App extends PureComponent {
-  getPage = () => {
-    return mainMenu()
-  }
+const mapStateToProps = ({gameState}) => ({
+  gameState
+})
 
-  render () {
-    return this.getPage()
-  }
-}
+const App = connect(
+  mapStateToProps,
+  null
+)(AppFrame)
+
+export default App

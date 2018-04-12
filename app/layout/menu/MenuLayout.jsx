@@ -21,7 +21,7 @@ export default class Render extends PureComponent {
         <Button
           key={entry.key}
           style={{marginBottom: 10}}
-          onPress={entry.onClick}>
+          onClick={entry.onClick}>
             <span>{entry.label}</span>
         </Button>
       ))

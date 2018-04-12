@@ -1,18 +1,17 @@
 import { Map } from 'immutable'
 
-import { actionTypes } from '../actions'
+import { types } from '../actions'
+import { gameStates } from '../constants/gameStates'
 
-const initialState = new Map({
-  menuOpen: false
-})
-
-const reducer = (state = initialState, action) => {
+const core = (state = [], action) => {
   let newState
 
   switch (action.type) {
-    // UI
-    case actionTypes.MENU_CLICK:
-      newState = state.setIn(['menuOpen'], !state.get('menuOpen'))
+    case types.GAME_START:
+      newState = {
+        ...state,
+        gameState: gameStates.GAME_START
+      }
       break
 
     default:
@@ -22,4 +21,4 @@ const reducer = (state = initialState, action) => {
   return newState
 }
 
-export default reducer
+export default core
