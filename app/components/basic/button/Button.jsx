@@ -1,15 +1,12 @@
 import React from 'react'
-import {TouchableOpacity, StyleSheet} from 'react-native'
 
-import css from './styles'
+import styles from './styles'
 
-const styles = StyleSheet.create(css);
-
-const Button = ({onClick, ...props}) => {
-  <TouchableOpacity
-    style={styles.button}
-    onPress={entry.onClick}
+const Button = ({onClick, className, style, ...props}) => {
+  return <button
+    style={Object.assign({}, styles.button, styles[className], style)}
+    onClick={onClick}
     {...props}/>
 }
 
-export default Button
+export { Button }

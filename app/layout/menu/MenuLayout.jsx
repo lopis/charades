@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react'
+import { Button } from '../../components'
+import { VerticalLayout } from '../../layout'
 
 export default class Render extends PureComponent {
     constructor(){
@@ -16,11 +18,12 @@ export default class Render extends PureComponent {
 
     makeMenu = (entries = []) => {
       return entries.map(entry => (
-        <button
+        <Button
           key={entry.key}
+          style={{marginBottom: 10}}
           onPress={entry.onClick}>
             <span>{entry.label}</span>
-        </button>
+        </Button>
       ))
     }
 
@@ -28,10 +31,10 @@ export default class Render extends PureComponent {
         const {menuEntries} = this.props
 
         return (
-            <div>
+            <VerticalLayout>
                 <span>Charades</span>
                 {this.makeMenu(menuEntries)}
-            </div>
+            </VerticalLayout>
         )
     }
 }
