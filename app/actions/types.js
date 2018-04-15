@@ -5,7 +5,9 @@ export const types = [
   'MENU_PACCOUNT',
 
   // GAME FLOW
-  'GAME_START'
+  'GAME_START',
+  'CREATE_PLAYER',
+  'UPDATE_PLAYER',
 ].reduce((acc, value) => (
   Object.assign(acc, {[value]: value})
 ), {})

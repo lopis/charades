@@ -3286,7 +3286,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.0.0, invariant@^2.2.2:
+invariant@^2.0.0, invariant@^2.2.2, invariant@^2.2.3:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -5218,6 +5218,16 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-automata@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-automata/-/react-automata-2.0.0.tgz#5d65fca6100ee514b7aef532f2c6845a7e4b34ff"
+  dependencies:
+    invariant "^2.2.3"
+    minimatch "^3.0.4"
+    prop-types "^15.6.0"
+    react-test-renderer "^16.2.0"
+    xstate "^3.0.4"
+
 react-clone-referenced-element@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-clone-referenced-element/-/react-clone-referenced-element-1.0.1.tgz#2bba8c69404c5e4a944398600bcc4c941f860682"
@@ -5241,6 +5251,10 @@ react-dom@^16.0.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-is@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
 
 react-native@0.49.5:
   version "0.49.5"
@@ -5322,6 +5336,15 @@ react-test-renderer@16.0.0-beta.5:
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
+
+react-test-renderer@^16.2.0:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.3.1.tgz#d9257936d8535bd40f57f3d5a84e7b0452fb17f2"
+  dependencies:
+    fbjs "^0.8.16"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+    react-is "^16.3.1"
 
 react-timer-mixin@^0.13.2:
   version "0.13.3"
@@ -6849,6 +6872,10 @@ xmldom@0.1.x:
 xpipe@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/xpipe/-/xpipe-1.0.5.tgz#8dd8bf45fc3f7f55f0e054b878f43a62614dafdf"
+
+xstate@^3.0.4:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-3.1.1.tgz#7d6b5f77a35547ec21269ac8f67e4ad60fd25fbe"
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"

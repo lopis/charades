@@ -1,15 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { play, store, account } from '../../actions/menu'
+import { createPlayer, updatePlayer } from '../../actions'
 
 import GameLobbyLayout from '../../layout/game/GameLobbyLayout'
 
-const mapStateToProps = state => ({
-
+const mapStateToProps = ({players}) => ({
+  players
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  createPlayer: (playerName) => {
+    dispatch(createPlayer(playerName))
+  },
+  updatePlayer: (playerName) => {
+    dispatch(updatePlayer(playerName))
+  }
 })
 
 const GameLobby = connect(

@@ -13,11 +13,23 @@ const core = (state = [], action) => {
         gameState: gameStates.GAME_START
       }
       break
+    case types.CREATE_PLAYER:
+    case types.UPDATE_PLAYER:
+      const playerId = action.playerId || Date.now()
+      newState = {
+        ...state,
+        players: (state.players || []).concat([{
+          name: action.playerName,
+          id: playerId,
+        }])
+      }
+      break
 
     default:
       newState = state
   }
 
+  console.log(newState);
   return newState
 }
 
