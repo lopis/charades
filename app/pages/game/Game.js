@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { createPlayer, updatePlayer } from '../../actions'
 
-import GameLobbyLayout from '../../layout/game/GameLobbyLayout'
+import { createPlayer, updatePlayer } from '../../actions'
+import GameManager from '../../containers/GameManager'
 
 const mapStateToProps = ({players}) => ({
   players
@@ -17,9 +17,9 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const GameLobby = connect(
+const Game = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GameLobbyLayout)
+)(GameManager)
 
-export default GameLobby
+export default Game

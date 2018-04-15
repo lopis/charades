@@ -29,7 +29,6 @@ const core = (state = [], action) => {
       newState = state
   }
 
-  console.log(newState);
   return newState
 }
 
