@@ -3,7 +3,7 @@ import {View, Text, TextInput, StyleSheet} from 'react-native'
 
 import Button from '../../components/basic/button/Button'
 
-export default class Render extends PureComponent {
+export default class MenuLayout extends PureComponent {
   onChange = (value) => {
     const inputValue = value
     this.setState(() => ({ inputValue }))

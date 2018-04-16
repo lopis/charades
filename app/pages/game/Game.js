@@ -1,20 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { createPlayer, updatePlayer } from '../../actions'
+import { createPlayer, removePlayer } from '../../actions'
 import GameManager from '../../containers/GameManager'
 
-const mapStateToProps = ({players}) => ({
-  players
+const mapStateToProps = ({players, words}) => ({
+  players,
+  words
 })
 
 const mapDispatchToProps = dispatch => ({
-  createPlayer: (playerName) => {
-    dispatch(createPlayer(playerName))
-  },
-  updatePlayer: (playerName) => {
-    dispatch(updatePlayer(playerName))
-  }
+
 })
 
 const Game = connect(

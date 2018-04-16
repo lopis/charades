@@ -2,57 +2,80 @@ import React, { PureComponent } from 'react'
 import { withStatechart } from 'react-automata'
 
 import statechart from '../helpers/statechart'
-import { VerticalLayout } from '../layout/basic/VerticalLayout'
-import { Button } from '../components'
+import {
+  GameLobby,
+  GameWords,
+  GamePlay,
+  GameEnd
+} from '../components/game'
+
 
 class GameManager extends PureComponent {
+  constructor (props) {
+    super()
+
+    this.state = {
+      players: props.players || [],
+      words: props.words || [],
+    }
+  }
+  gameComponentMap = {
+    GAME_LOBBY: GameLobby,
+    GAME_WORDS: GameWords,
+    GAME_PLAY: GamePlay,
+    GAME_END: GameEnd,
+  }
+
+  getGameComponent = () => {
+    return this.gameComponentMap[this.props.machineState]
+  }
+
   createPlayer = () => {
-    this.props.createPlayer(this.props.newPlayerName)
+    this.setState({
+      players: this.state.players.concat([{
+        id: Date.now(),
+        name: this.props.newPlayerName
+      }])
+    })
   }
 
-  onPlayerCreate = (event) => {
-    const value = event.target.value || ''
-    if (value.length > 0) {
-      this.props.transition(
-        'CREATE_PLAYER',
-        {newPlayerName: event.target.value}
-      )
-    }
+  removePlayer = () => {
+    this.setState({
+      players: this.state.players.filter(p => {
+        return p.id != this.props.playerId
+      })
+    })
   }
 
-  onPlayerChange = (event) => {
-    const value = event.target.value || ''
-    const playerId = event.target.attributes['data-player-id']
-    if (value.length > 0) {
-      this.props.updatePlayer(value, playerId)
-    }
+  createWord = () => {
+    console.log('createWord');
+    this.setState({
+      words: this.state.words.concat([{
+        id: Date.now(),
+        name: this.props.word
+      }])
+    })
   }
 
-  createLobbyForm = (players = []) => {
-    return players.map((player, i) => (
-      <input type="text"
-        key={player.id}
-        data-player-id={player.id}
-        value={player.name}
-        onChange={this.onPlayerChange} />
-    ))
+  removeWord = () => {
+    this.setState({
+      words: this.state.words.filter(p => {
+        return p.id != this.props.wordId
+      })
+    })
+  }
+
+  onContinue = () => {
+    this.props.transition('CONTINUE')
   }
 
   render() {
-    const players = this.props.players || []
-    return (
-      <VerticalLayout>
-        <h1>Lobby</h1>
-        <h2>Ready Players</h2>
-        <h3>{this.props.machineState.toString()}</h3>
-        {this.createLobbyForm(players)}
-        <input type="text"
-          autoFocus="autoFocus"
-          key={`newPlayer_${players.length}`}
-          onBlur={this.onPlayerCreate} />
-        <Button>Start Game</Button>
-      </VerticalLayout>
-    )
+    const element = this.getGameComponent()
+    return React.createElement(element, {
+      onContinue: this.onContinue,
+      ...this.props,
+      ...this.state
+    })
   }
 }
 

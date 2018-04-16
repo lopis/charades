@@ -39,7 +39,15 @@ const gameLobbyState = {
 const gameWordsState = {
   GAME_WORDS: {
     on: {
-      ...quitGameTransition
+      ...quitGameTransition,
+      CREATE_WORD: {
+        GAME_WORDS: {
+          actions: ['createWord']
+        }
+      },
+      CONTINUE: {
+        GAME_PLAY: 'startGame'
+      }
     }
   }
 }

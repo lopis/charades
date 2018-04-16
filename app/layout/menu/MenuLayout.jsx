@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
-import { Button } from '../../components'
-import { VerticalLayout } from '../../layout'
+import { Button, VerticalLayout } from '../../components'
 
-export default class Render extends PureComponent {
+export default class MenuLayout extends PureComponent {
     constructor(){
         super()
 

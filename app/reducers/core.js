@@ -24,6 +24,11 @@ const core = (state = [], action) => {
         }])
       }
       break
+    case types.REMOVE_PLAYER:
+      newState = {
+        ...state,
+        players : players.filter(p => p.id != action.playerId)
+      }
 
     default:
       newState = state

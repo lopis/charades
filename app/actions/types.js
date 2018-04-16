@@ -8,6 +8,7 @@ export const types = [
   'GAME_START',
   'CREATE_PLAYER',
   'UPDATE_PLAYER',
+  'REMOVE_PLAYER',
 ].reduce((acc, value) => (
   Object.assign(acc, {[value]: value})
 ), {})
