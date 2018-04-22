@@ -1,9 +1,3 @@
-// Validation rules
-const isMinus = ({ operator }) => operator === '-'
-const isNotMinus = state => !isMinus(state)
-const isZero = ({ number }) => number === '0'
-const isNotZero = state => !isZero(state)
-
 const notPlayingState = {
   NOT_PLAYING: {
     on: {

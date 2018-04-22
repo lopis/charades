@@ -5,10 +5,9 @@ import lobby from '../helpers/statecharts/lobby'
 import {
   GamePlayers,
   GameWords,
-  GamePlay,
   GameEnd
 } from '../components/game'
-
+import GameManager from './GameManager'
 
 class GameLobby extends PureComponent {
   constructor (props) {
@@ -38,7 +37,7 @@ class GameLobby extends PureComponent {
   gameComponentMap = {
     GAME_PLAYERS: GamePlayers,
     GAME_WORDS: GameWords,
-    GAME_PLAY: GamePlay,
+    GAME_PLAY: GameManager,
     GAME_END: GameEnd,
   }
 

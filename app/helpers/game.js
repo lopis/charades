@@ -4,7 +4,6 @@ import MainMenu from '../pages/lobby/MainMenu'
 import Game from '../pages/game/Game'
 
 export const getCurrentPage = (appState = '') => {
-  console.log(appStates, appState);
   switch (appState) {
     case appStates.GAME_START:
     case appStates.GAME_END:

@@ -4,91 +4,54 @@ const isNotMinus = state => !isMinus(state)
 const isZero = ({ number }) => number === '0'
 const isNotZero = state => !isZero(state)
 
-const notPlayingState = {
-  NOT_PLAYING: {
-    on: {
-      START_GAME: {
-        GAME_PLAYERS: 'startGame'
-      }
-    }
-  }
-}
-
 const quitGameTransition = {
   QUIT_GAME: {
     NOT_PLAYING: 'quitGame'
   }
 }
 
-const gameLobbyState = {
-  GAME_PLAYERS: {
-    on: {
-      ...quitGameTransition,
-      CONTINUE: {
-        GAME_WORDS: 'collectWords'
-      },
-      CREATE_PLAYER: {
-        GAME_PLAYERS: {
-          actions: ['createPlayer']
-        }
-      },
-      SKIP_INTRO: {
-        GAME_PLAY: 'startGame'
-      }
-    }
-  }
-}
-
-const gameWordsState = {
-  GAME_WORDS: {
-    on: {
-      ...quitGameTransition,
-      CREATE_WORD: {
-        GAME_WORDS: {
-          actions: ['createWord']
-        }
-      },
-      CONTINUE: {
-        GAME_PLAY: 'startGame'
-      }
-    }
-  }
-}
-
-const gamePlayState = {
-  GAME_PLAY: {
-    on: {
-      ...quitGameTransition,
-      GAME_OVER: {
-        GAME_END: 'gameOver'
-      }
-    }
-  }
-}
-
-const gameEndState = {
-  GAME_END: {
-    on: {
-      QUIT_GAME: {
-        GAME_END: {
-          actions: ['quitGame']
-        }
-      },
-      NEW_GAME: {
-        GAME_PLAYERS: 'startGame'
-      }
-    }
-  }
-}
-
 const game = {
-  initial: 'GAME_PLAYERS',
+  initial: 'PRE_STATE',
   states: {
-    ...notPlayingState,
-    ...gameLobbyState,
-    ...gameWordsState,
-    ...gamePlayState,
-    ...gameEndState,
+    PRE_STATE: {
+      on: {
+        CONTINUE: {
+          READY_PLAYERS: {
+            actions: ['resetPhase', 'shufflePlayers', 'shufflyWords', 'nextPlayers']
+          }
+        }
+      }
+    },
+    READY_PLAYERS: {
+      on: {
+        ...quitGameTransition,
+        CONTINUE: {
+          SHOW_WORD: {
+            actions: ['nextWord']
+          }
+        }
+      }
+    },
+    SHOW_WORD: {
+      on: {
+        SKIP: {
+          SHOW_WORD: ['skip']
+        },
+        GUESS: {
+          SHOW_WORD: ['guess']
+        },
+        TIMES_UP: {
+          SHOW_ROUND_RESULTS: ['endRound']
+        }
+      }
+    },
+    SHOW_ROUND_RESULTS: {
+      on: {
+        CONTINUE: {
+          NOT_PLAYING: 'quitGame'
+        }
+      }
+    }
   },
 }
 

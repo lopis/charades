@@ -16,6 +16,7 @@ const style = {
     border: 'none',
     background: 'linear-gradient(45deg, rgb(250, 63, 79), rgb(241, 89, 0))',
     borderRadius: 50,
+    margin: 2,
   },
   btnRed: {
     background: 'linear-gradient(45deg, rgb(250, 63, 79), rgb(241, 89, 0))',
