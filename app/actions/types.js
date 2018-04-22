@@ -1,5 +1,6 @@
 export const types = [
   // MENU ACTIONS
+  'MAIN_MENU',
   'MENU_PLAY',
   'MENU_STORE',
   'MENU_PACCOUNT',

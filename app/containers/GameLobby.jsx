@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react'
 import { withStatechart } from 'react-automata'
 
-import statechart from '../helpers/statechart'
+import lobby from '../helpers/statecharts/lobby'
 import {
-  GameLobby,
+  GamePlayers,
   GameWords,
   GamePlay,
   GameEnd
 } from '../components/game'
 
 
-class GameManager extends PureComponent {
+class GameLobby extends PureComponent {
   constructor (props) {
     super()
 
@@ -18,9 +18,25 @@ class GameManager extends PureComponent {
       players: props.players || [],
       words: props.words || [],
     }
+
+    if (props._debugSkipIntro) {
+      props.transition('SKIP_INTRO')
+    }
   }
+
+  startGame = () => {
+    this.setState({
+      players: this.props.players || [],
+      words: this.props.words || [],
+    })
+
+    if (props._debugSkipIntro) {
+      props.transition('SKIP_INTRO')
+    }
+  }
+
   gameComponentMap = {
-    GAME_LOBBY: GameLobby,
+    GAME_PLAYERS: GamePlayers,
     GAME_WORDS: GameWords,
     GAME_PLAY: GamePlay,
     GAME_END: GameEnd,
@@ -48,7 +64,6 @@ class GameManager extends PureComponent {
   }
 
   createWord = () => {
-    console.log('createWord');
     this.setState({
       words: this.state.words.concat([{
         id: Date.now(),
@@ -69,8 +84,14 @@ class GameManager extends PureComponent {
     this.props.transition('CONTINUE')
   }
 
+  quitGame = () => {
+    this.props.stopGame()
+  }
+
   render() {
     const element = this.getGameComponent()
+    if (!element) return null
+
     return React.createElement(element, {
       onContinue: this.onContinue,
       ...this.props,
@@ -79,4 +100,4 @@ class GameManager extends PureComponent {
   }
 }
 
-export default withStatechart(statechart, { devTools: true })(GameManager)
+export default withStatechart(lobby, { devTools: true })(GameLobby)

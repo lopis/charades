@@ -2,11 +2,26 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { appStates } from './constants/appStates'
 import reducer from './reducers/core'
 
 import App from './App'
 
-const store = createStore(reducer)
+const preloadedState = {
+  appState: appStates.MAIN_MENU,
+  // _debugSkipIntro: true,
+  players: [
+    {id: 1, name: 'John'},
+    {id: 2, name: 'Mary'},
+    {id: 3, name: 'Alex'},
+  ],
+  words: [
+    {id: 1, name: 'dog'},
+    {id: 2, name: 'cat'},
+    {id: 3, name: 'pig'},
+  ]
+}
+const store = createStore(reducer, preloadedState)
 
 render(
   <Provider store={store}>

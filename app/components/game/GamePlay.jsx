@@ -25,7 +25,9 @@ class GamePlay extends PureComponent {
         {this.renderList(players)}
         <h2>Your words:</h2>
         {this.renderList(words)}
-        <Button onClick={onContinue}>Finish Game</Button>
+        <Button onClick={() => this.props.transition('GAME_OVER')}>
+          Finish Game
+        </Button>
       </VerticalLayout>
     )
   }

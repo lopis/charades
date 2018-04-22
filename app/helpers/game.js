@@ -1,15 +1,16 @@
 import React from 'react'
-import { gameStates } from '../constants/gameStates'
+import { appStates } from '../constants/appStates'
 import MainMenu from '../pages/lobby/MainMenu'
 import Game from '../pages/game/Game'
 
-export const getCurrentPage = (gameState = '') => {
-  console.log(gameState);
-  switch (gameState) {
-    case gameStates.GAME_START:
-    case gameStates.GAME_END:
+export const getCurrentPage = (appState = '') => {
+  console.log(appStates, appState);
+  switch (appState) {
+    case appStates.GAME_START:
+    case appStates.GAME_END:
       return <Game />
 
+    case appStates.MAIN_MENU:
     default:
       return <MainMenu />
   }

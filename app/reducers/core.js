@@ -1,16 +1,17 @@
 import { Map } from 'immutable'
 
 import { types } from '../actions'
-import { gameStates } from '../constants/gameStates'
+import { appStates } from '../constants/appStates'
 
 const core = (state = [], action) => {
   let newState
 
   switch (action.type) {
+    case types.MAIN_MENU:
     case types.GAME_START:
       newState = {
         ...state,
-        gameState: gameStates.GAME_START
+        appState: appStates[action.type]
       }
       break
     case types.CREATE_PLAYER:

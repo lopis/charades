@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { VerticalLayout } from '../basic/VerticalLayout'
 import { Button } from '../index'
 
-class GameLobby extends PureComponent {
+class GamePlayers extends PureComponent {
   onPlayerCreate = (event) => {
     const value = event.target.value || ''
     if (value.length > 0) {
@@ -56,4 +56,4 @@ class GameLobby extends PureComponent {
   }
 }
 
-export { GameLobby }
+export { GamePlayers }

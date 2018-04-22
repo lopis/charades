@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 
-const GameEnd = props => {
-  const players = this.props.players || []
-  return (
-    <VerticalLayout>
-      <h1>Game Lobby!</h1>
-      <Button onClick={this.onContinue}>Continue</Button>
-    </VerticalLayout>
-  )
+import { VerticalLayout } from '../basic/VerticalLayout'
+import { Button } from '../index'
+
+class GameEnd extends PureComponent {
+  render () {
+    const {machineState} = this.props
+
+    return (
+      <VerticalLayout>
+        <h1>Game Over!</h1>
+        <h3>{machineState.toString()}</h3>
+        <Button onClick={() => this.props.transition('NEW_GAME')}>
+          Start new game
+        </Button>
+        <Button onClick={() => this.props.transition('QUIT_GAME', {value: 'please'})}>
+          Quit to menu
+        </Button>
+      </VerticalLayout>
+    )
+  }
 }
 
 export { GameEnd }

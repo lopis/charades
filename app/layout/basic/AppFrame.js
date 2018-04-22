@@ -1,7 +1,8 @@
 import { getCurrentPage } from '../../helpers/game'
 
-const AppFrame = ({gameState}) => {
-  return getCurrentPage(gameState)
+const AppFrame = ({appState}) => {
+
+  return getCurrentPage(appState)
 }
 
 export default AppFrame
