@@ -5,13 +5,13 @@ import { Button } from '../index'
 
 class ShowWord extends PureComponent {
   render () {
-    const {word = '', transition} = this.props
+    const {word = '', transition, machineState} = this.props
 
     return (
       <VerticalLayout>
         <h1>Your word is</h1>
         <p style={{fontSize: '3em'}}>
-          {word}
+          {word.name}
         </p>
         <Button onClick={() => transition('GUESS')}>
           GUESSED

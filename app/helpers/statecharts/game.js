@@ -35,10 +35,14 @@ const game = {
     SHOW_WORD: {
       on: {
         SKIP: {
-          SHOW_WORD: ['skip']
+          SHOW_WORD: {
+            actions: ['skipWord']
+          }
         },
         GUESS: {
-          SHOW_WORD: ['guess']
+          SHOW_WORD: {
+            actions: ['guessWord']
+          }
         },
         TIMES_UP: {
           SHOW_ROUND_RESULTS: ['endRound']
