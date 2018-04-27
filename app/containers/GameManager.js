@@ -22,9 +22,7 @@ class GameManager extends PureComponent {
   componentDidMount () {
     this.setState(() => ({
       players: shuffle(this.state.players),
-      words: shuffle(this.state.words),
-      player1: this.state.players[0],
-      player2: this.state.players[1],
+      words: shuffle(this.state.words)
     }), () => {
       this.props.transition('CONTINUE')
     })
@@ -42,7 +40,6 @@ class GameManager extends PureComponent {
   nextPhase = () => {
     this.setState(() => ({
       phase: this.state.phase++,
-      round: 0,
       player1: null,
       player2: null,
     }))
@@ -61,45 +58,57 @@ class GameManager extends PureComponent {
   }
 
   nextPlayers = () => {
-    const {round, players} = this.state
-    const nextRound = this.state.round++
+    const {round = -1, players} = this.state
+    const nextRound = round + 1
     this.setState(() => ({
       round: nextRound,
+      score: 0,
       player1: players[nextRound],
       player2: players[(nextRound+1) % players.length],
-    }))
+    }), () => {
+      this.forceUpdate()
+      this.props.transition('NEXT_ROUND')
+    })
   }
 
   nextWord = () => {
-    const words = this.state.words
-    const nextWord = words.pop()
+    if (this.state.words.length === 0) {
+      this.props.transition('LAST_WORD')
+    }
 
-    this.setState(() => ({
-      word: nextWord,
-      words: words,
-      // usedWords: usedWords.concat([nextWord])
-    }))
+    this.setState(() => {
+      const words = this.state.words
+      const nextWord = words.pop()
+
+      return {
+        word: nextWord,
+        words: words
+      }
+    })
   }
 
   skipWord = () => {
-    console.log('skipWord');
-    const currentWord = this.state.word
-    currentWord.state = 'skipped'
-
     this.setState(() => {
-      words: this.state.words.concat([currentWord])
+      const currentWord = this.state.word
+      currentWord.bonus = (currentWord.bonus || 0) + 1
+      currentWord.state = 'skipped'
+
+      return {
+        words: [currentWord].concat(this.state.words),
+        score: this.state.score -1
+      }
     }, this.nextWord)
   }
 
   guessWord = () => {
-    console.log('guessWord');
     const currentWord = this.state.word
     currentWord.state = 'guessed'
     const usedWords = this.state.usedWords || []
 
-    this.setState(() => {
-      usedWords: usedWords.concat([currentWord])
-    }, this.nextWord)
+    this.setState(() => ({
+      usedWords: usedWords.concat([currentWord]),
+      score: this.state.score + 1 + (currentWord.bonus || 0)
+    }), this.nextWord)
   }
 
   gameComponentMap = {
@@ -120,19 +129,22 @@ class GameManager extends PureComponent {
   }
 
   render() {
-    const element = this.getGameComponent()
-    if (!element) return (
+    const Element = this.getGameComponent()
+    if (!Element) return (
       <div>
         <h1>{this.props.machineState.value}</h1>
         <h2>Loading...</h2>
       </div>
     )
 
-    return React.createElement(element, {
-      onContinue: this.onContinue,
-      ...this.props,
-      ...this.state
-    })
+    console.log('render', Element, this.state);
+
+    return (
+      <Element onContinue={this.onContinue}
+        {...this.props}
+        {...this.state}
+      />
+    )
   }
 }
 

@@ -5,16 +5,16 @@ import { Button } from '../index'
 
 class RoundResults extends PureComponent {
   render () {
-    const {players = []} = this.props
+    const {player1, player2, score} = this.props
 
     return (
       <VerticalLayout>
         <h1>Time's up!</h1>
         <p>
-          Players <strong>{players[0]}</strong> and <strong>{players[1]}</strong>
+          Players <strong>{player1.name}</strong> and <strong>{player2.name}</strong>
         </p>
         <p>
-          Your score was 9000
+          Your score was {score} points.
         </p>
         <Button onClick={() => this.props.transition('CONTINUE')}>
           Next round

@@ -16,10 +16,11 @@ const game = {
     PRE_STATE: {
       on: {
         CONTINUE: {
-          READY_PLAYERS: {
-            actions: ['resetPhase', 'shufflePlayers', 'shufflyWords', 'nextPlayers']
-          }
-        }
+          PRE_STATE: {
+            actions: ['resetPhase', 'shufflePlayers', 'shuffleWords', 'nextPlayers']
+          },
+        },
+        NEXT_ROUND: 'READY_PLAYERS'
       }
     },
     READY_PLAYERS: {
@@ -45,15 +46,25 @@ const game = {
           }
         },
         TIMES_UP: {
-          SHOW_ROUND_RESULTS: ['endRound']
+          SHOW_ROUND_RESULTS: {
+            actions: ['endRound']
+          }
+        },
+        LAST_WORD: {
+          SHOW_ROUND_RESULTS: {
+            actions: ['endRound']
+          }
         }
       }
     },
     SHOW_ROUND_RESULTS: {
       on: {
         CONTINUE: {
-          NOT_PLAYING: 'quitGame'
-        }
+          SHOW_ROUND_RESULTS: {
+            actions: ['nextPlayers']
+          }
+        },
+        NEXT_ROUND: 'READY_PLAYERS'
       }
     }
   },
