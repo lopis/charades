@@ -5,7 +5,11 @@ import { Button } from '../index'
 
 class ReadyPlayers extends PureComponent {
   render () {
-    const {player1, player2, transition} = this.props
+    const {player1, player2, transition, onContinue, onQuit} = this.props
+
+    if (!player1 || !player2) {
+      return null
+    }
 
     return (
       <VerticalLayout>
@@ -15,10 +19,10 @@ class ReadyPlayers extends PureComponent {
           <br/>
           Round {this.props.round}
         </p>
-        <Button onClick={() => transition('CONTINUE')}>
+        <Button onClick={onContinue}>
           Start
         </Button>
-        <Button onClick={() => transition('QUIT_GAME')}>
+        <Button onClick={onQuit}>
           Quit to menu
         </Button>
       </VerticalLayout>

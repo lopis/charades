@@ -5,7 +5,7 @@ import { Button } from '../index'
 
 class RoundResults extends PureComponent {
   render () {
-    const {player1, player2, score} = this.props
+    const {player1, player2, score, onContinue, onQuit} = this.props
 
     return (
       <VerticalLayout>
@@ -16,10 +16,10 @@ class RoundResults extends PureComponent {
         <p>
           Your score was {score} points.
         </p>
-        <Button onClick={() => this.props.transition('CONTINUE')}>
+        <Button onClick={onContinue}>
           Next round
         </Button>
-        <Button onClick={() => this.props.transition('QUIT_GAME')}>
+        <Button onClick={onQuit}>
           Quit to menu
         </Button>
       </VerticalLayout>

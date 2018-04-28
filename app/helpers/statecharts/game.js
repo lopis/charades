@@ -1,8 +1,6 @@
 // Validation rules
-const isMinus = ({ operator }) => operator === '-'
-const isNotMinus = state => !isMinus(state)
-const isZero = ({ number }) => number === '0'
-const isNotZero = state => !isZero(state)
+const lastPlayer = ({round, players}) => round === (players.length-1)
+const lastPhase = ({phase}) => phase === 3
 
 const quitGameTransition = {
   QUIT_GAME: {
@@ -15,6 +13,7 @@ const game = {
   states: {
     PRE_STATE: {
       on: {
+        ...quitGameTransition,
         CONTINUE: {
           PRE_STATE: {
             actions: ['resetPhase', 'shufflePlayers', 'shuffleWords', 'nextPlayers']
@@ -36,6 +35,7 @@ const game = {
     SHOW_WORD: {
       on: {
         SKIP: {
+          ...quitGameTransition,
           SHOW_WORD: {
             actions: ['skipWord']
           }
@@ -60,9 +60,26 @@ const game = {
     SHOW_ROUND_RESULTS: {
       on: {
         CONTINUE: {
-          SHOW_ROUND_RESULTS: {
-            actions: ['nextPlayers']
+          SHOW_PHASE_RESULTS: {
+            actions: ['endRound'],
+            cond: lastPhase
+          },
+          SHOW_PHASE_RESULTS: {
+            actions: ['endRound'],
+            cond: lastPlayer
+          },
+          READY_PLAYERS: {
+            actions: ['nextPlayers'],
           }
+        },
+      }
+    },
+    SHOW_PHASE_RESULTS: {
+      on: {
+        CONTINUE: {
+          SHOW_PHASE_RESULTS: {
+            actions: ['nextPhase']
+          },
         },
         NEXT_ROUND: 'READY_PLAYERS'
       }

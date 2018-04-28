@@ -5,7 +5,8 @@ import game from '../helpers/statecharts/game'
 import {
   ReadyPlayers,
   ShowWord,
-  RoundResults
+  RoundResults,
+  PhaseResults
 } from '../components/game'
 import shuffle from '../helpers/shuffle'
 
@@ -16,6 +17,13 @@ class GameManager extends PureComponent {
     this.state = {
       players: props.players || [],
       words: props.words || [],
+      scoreboard: {
+        phases: {
+          1: [],
+          2: [],
+          3: []
+        }
+      }
     }
   }
 
@@ -38,35 +46,58 @@ class GameManager extends PureComponent {
   }
 
   nextPhase = () => {
-    this.setState(() => ({
-      phase: this.state.phase++,
+    this.setState(({phase}, props) => ({
+      phase: phase + 1,
+      round: -1,
       player1: null,
       player2: null,
+      words: props.words
     }))
   }
 
+  endRound = () => {
+    this.setState(() => {
+      const {scoreboard, phase, player1, player2, score} = this.state
+      const phaseScore = scoreboard.phases[phase] || {}
+
+      return {
+        scoreboard: Object.assign({}, scoreboard, {
+          phases: {
+            [phase]: {
+              [player1.id]: (phaseScore[player1.id] || 0) + score,
+              [player2.id]: (phaseScore[player2.id] || 0) + score
+            }
+          },
+          score: 0
+        })
+      }
+    })
+  }
+
   shufflePlayers = () => {
-    this.setState(() => ({
-      players: shuffle(this.state.players)
+    this.setState(({players}) => ({
+      players: shuffle(players)
     }))
   }
 
   shufflyWords = () => {
-    this.setState(() => ({
-      words: shuffle(this.state.words)
+    this.setState(({words}) => ({
+      words: shuffle(words)
     }))
   }
 
   nextPlayers = () => {
-    const {round = -1, players} = this.state
-    const nextRound = round + 1
-    this.setState(() => ({
-      round: nextRound,
-      score: 0,
-      player1: players[nextRound],
-      player2: players[(nextRound+1) % players.length],
-    }), () => {
-      this.forceUpdate()
+    this.setState((state) => {
+      const {round = -1, players} = state
+      const nextRound = round + 1
+
+      return {
+        round: nextRound,
+        score: 0,
+        player1: players[nextRound],
+        player2: players[(nextRound+1) % players.length],
+      }
+    }, () => {
       this.props.transition('NEXT_ROUND')
     })
   }
@@ -76,8 +107,7 @@ class GameManager extends PureComponent {
       this.props.transition('LAST_WORD')
     }
 
-    this.setState(() => {
-      const words = this.state.words
+    this.setState(({words}) => {
       const nextWord = words.pop()
 
       return {
@@ -114,14 +144,19 @@ class GameManager extends PureComponent {
   gameComponentMap = {
     READY_PLAYERS: ReadyPlayers,
     SHOW_WORD: ShowWord,
-    SHOW_ROUND_RESULTS: RoundResults
+    SHOW_ROUND_RESULTS: RoundResults,
+    SHOW_PHASE_RESULTS: PhaseResults
   }
 
   getGameComponent = () => {
     return this.gameComponentMap[this.props.machineState.value]
   }
+
   onContinue = () => {
-    this.props.transition('CONTINUE')
+    this.props.transition('CONTINUE', this.state)
+  }
+  onQuit = () => {
+    this.props.transition('QUIT_GAME', this.state)
   }
 
   quitGame = () => {
@@ -137,12 +172,12 @@ class GameManager extends PureComponent {
       </div>
     )
 
-    console.log('render', Element, this.state);
-
     return (
-      <Element onContinue={this.onContinue}
+      <Element
         {...this.props}
         {...this.state}
+        onContinue={this.onContinue}
+        onQuit={this.onQuit}
       />
     )
   }
