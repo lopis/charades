@@ -36,6 +36,10 @@ class GameManager extends PureComponent {
     })
   }
 
+  componentDidTransition(prevStateMachine, event) {
+    console.log(`${prevStateMachine.value} > ${event} > ${this.props.machineState.value}`)
+  }
+
   resetPhase = () => {
     this.setState({
       phase: 0,

@@ -1,6 +1,6 @@
 // Validation rules
-const lastPlayer = ({round, players}) => round === (players.length-1)
-const lastPhase = ({phase}) => phase === 3
+const lastRound = ({words = []}) => words.length == 0
+const lastPhase = ({phase = 0}) => phase === 3
 
 const quitGameTransition = {
   QUIT_GAME: {
@@ -66,7 +66,7 @@ const game = {
           },
           SHOW_PHASE_RESULTS: {
             actions: ['endRound'],
-            cond: lastPlayer
+            cond: lastRound
           },
           READY_PLAYERS: {
             actions: ['nextPlayers'],
