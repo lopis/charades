@@ -9,19 +9,9 @@ const quitGameTransition = {
 }
 
 const game = {
-  initial: 'PRE_STATE',
+  initial: 'READY_PLAYERS',
   states: {
-    PRE_STATE: {
-      on: {
-        ...quitGameTransition,
-        CONTINUE: {
-          PRE_STATE: {
-            actions: ['resetPhase', 'shufflePlayers', 'shuffleWords', 'nextPlayers']
-          },
-        },
-        NEXT_ROUND: 'READY_PLAYERS'
-      }
-    },
+    NOT_PLAYING: {},
     READY_PLAYERS: {
       on: {
         ...quitGameTransition,
@@ -34,15 +24,19 @@ const game = {
     },
     SHOW_WORD: {
       on: {
+        ...quitGameTransition,
         SKIP: {
-          ...quitGameTransition,
           SHOW_WORD: {
             actions: ['skipWord']
           }
         },
         GUESS: {
+          SHOW_PHASE_RESULTS: {
+            actions: ['guessWord'],
+            cond: lastRound
+          },
           SHOW_WORD: {
-            actions: ['guessWord']
+            actions: ['guessWord'],
           }
         },
         TIMES_UP: {
@@ -59,6 +53,7 @@ const game = {
     },
     SHOW_ROUND_RESULTS: {
       on: {
+        ...quitGameTransition,
         CONTINUE: {
           SHOW_PHASE_RESULTS: {
             actions: ['endRound'],
@@ -76,6 +71,7 @@ const game = {
     },
     SHOW_PHASE_RESULTS: {
       on: {
+        ...quitGameTransition,
         CONTINUE: {
           SHOW_PHASE_RESULTS: {
             actions: ['nextPhase']

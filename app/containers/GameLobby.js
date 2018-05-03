@@ -6,7 +6,7 @@ import {
   GamePlayers,
   GameWords,
   GameEnd
-} from '../components/game'
+} from '../components/lobby'
 import GameManager from './GameManager'
 
 class GameLobby extends PureComponent {

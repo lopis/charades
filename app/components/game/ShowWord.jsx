@@ -4,7 +4,14 @@ import { VerticalLayout } from '../basic/VerticalLayout'
 import { Button } from '../index'
 
 const ShowWord = (props) => {
-  const {word = '', transition, score, machineState, player1, player2} = props
+  const {
+    word = '',
+    transition,
+    score,
+    machineState,
+    player1,
+    player2
+  } = props
 
   return (
     <VerticalLayout>

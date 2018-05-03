@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "html-webpack-plugin": "^2.30.1",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.2",
     "react": "^16.0.0",
     "react-automata": "^2.0.0",
     "react-dom": "^16.0.0",

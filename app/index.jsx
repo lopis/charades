@@ -16,14 +16,14 @@ const preloadedState = {
     {id: 3, name: 'Alex'},
   ],
   words: [
-    {id: 1, name: 'dog'},
-    {id: 2, name: 'cat'},
-    {id: 3, name: 'pig'},
-    {id: 4, name: 'cow'},
-    {id: 5, name: 'duck'},
-    {id: 6, name: 'horse'},
-    {id: 7, name: 'fish'},
-    {id: 8, name: 'lion'},
+    {id: 1, name: '🐕 dog'},
+    {id: 2, name: '🐈 cat'},
+    {id: 3, name: '🐖 pig'},
+    {id: 4, name: '🐄 cow'},
+    {id: 5, name: '🐦 bird'},
+    {id: 6, name: '🐴 horse'},
+    {id: 7, name: '🐟 fish'},
+    {id: 8, name: '🐯 tiger'},
   ]
 }
 const store = createStore(reducer, preloadedState)
