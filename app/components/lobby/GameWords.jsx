@@ -17,12 +17,12 @@ class GameWords extends PureComponent {
   renderWordList = () => {
     const words = this.props.words || []
     return words.map((word, i) => (
-      <div type="text"
+      <span type="text"
         key={word.id}
         data-word-id={word.id}
         onChange={this.onWordChange}>
         {word.name}
-      </div>
+      </span>
     ))
   }
 
@@ -33,7 +33,9 @@ class GameWords extends PureComponent {
         <h1>Game Words</h1>
         <h2>Add your words</h2>
         <h3>{machineState.toString()}</h3>
-        {this.renderWordList()}
+        <div style={{flexGrow: 1}}>
+          {this.renderWordList()}
+        </div>
         <input type="text"
           autoFocus="autoFocus"
           key={`newPlayer_${words.length}`}

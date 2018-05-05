@@ -45,7 +45,9 @@ class GamePlayers extends PureComponent {
         <h1>Lobby</h1>
         <h2>Ready Players</h2>
         <h3>{machineState.toString()}</h3>
-        {this.createForm(players)}
+        <div style={{flexGrow: 1}}>
+          {this.createForm(players)}
+        </div>
         <input type="text"
           autoFocus="autoFocus"
           key={`newPlayer_${players.length}`}

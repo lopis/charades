@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 
 const styles = {
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  height: '100%',
 }
 
 const VerticalLayout = ({style, children, ...props}) => {

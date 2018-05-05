@@ -9,7 +9,6 @@ import {
   RoundResults,
   ShowWord,
 } from '../components/game'
-import shuffle from '../helpers/shuffle'
 import {
   getGuessWordState,
   getInitialState,
@@ -37,7 +36,7 @@ class GameManager extends PureComponent {
   }
 
   nextPhase = () => {
-    this.setState(getNextPhaseState)
+    this.setState(getNextPhaseState, this.nextPlayers)
   }
 
   endRound = () => {

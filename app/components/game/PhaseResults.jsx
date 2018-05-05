@@ -10,15 +10,17 @@ class PhaseResults extends PureComponent {
     return (
       <VerticalLayout>
         <h1>Phase {phase +1} results</h1>
-        {scoreboard.phases[phase] &&
-          players.map(player => {
-            const score = scoreboard.phases[phase][player.id]
-            return <p key={player.id}>
-              <strong>Player {player.name}:</strong>
-              <br/>
-              {score || 0} points
-            </p>
-        })}
+        <div style={{flexGrow: 1}}>
+          {scoreboard.phases[phase] &&
+            players.map(player => {
+              const score = scoreboard.phases[phase][player.id]
+              return <p key={player.id}>
+                <strong>Player {player.name}:</strong>
+                <br/>
+                {score || 0} points
+              </p>
+          })}
+        </div>
         <Button onClick={onContinue}>
           Next Phase
         </Button>

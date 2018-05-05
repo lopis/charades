@@ -8,6 +8,7 @@ class GamePlay extends PureComponent {
   renderList = (list = []) => {
     return list.map((item, i) => (
       <div type="text"
+        style={{flexGrow: 1}}
         key={item.id}
         data-id={item.id}>
         {item.name}

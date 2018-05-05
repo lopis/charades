@@ -14,16 +14,16 @@ class ReadyPlayers extends PureComponent {
     return (
       <VerticalLayout>
         <h1>Get Ready!</h1>
-        <p>
+        <div style={{flexGrow: 1}}>
           Players <strong>{player1.name}</strong> and <strong>{player2.name}</strong>
           <br/>
           Round {this.props.round}
-        </p>
+        </div>
+        {/* <Button onClick={onQuit}>
+          Quit to menu
+        </Button> */}
         <Button onClick={onContinue}>
           Start
-        </Button>
-        <Button onClick={onQuit}>
-          Quit to menu
         </Button>
       </VerticalLayout>
     )

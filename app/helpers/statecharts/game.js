@@ -1,5 +1,6 @@
 // Validation rules
-const lastRound = ({words = []}) => words.length == 0
+const noMoreWords = ({words = []}) => words.length === 0
+const lastRound = ({words = [], skippedWords = []}) => (words.length === 0 && skippedWords.length === 0)
 const lastPhase = ({phase = 0}) => phase === 3
 
 const quitGameTransition = {
@@ -26,14 +27,26 @@ const game = {
       on: {
         ...quitGameTransition,
         SKIP: {
+          SHOW_PHASE_RESULTS: {
+            actions: ['skipWord', 'endRound'],
+            cond: lastRound
+          },
+          SHOW_ROUND_RESULTS: {
+            actions: ['skipWord', 'endRound'],
+            cond: noMoreWords
+          },
           SHOW_WORD: {
             actions: ['skipWord']
           }
         },
         GUESS: {
           SHOW_PHASE_RESULTS: {
-            actions: ['guessWord'],
+            actions: ['guessWord', 'endRound'],
             cond: lastRound
+          },
+          SHOW_ROUND_RESULTS: {
+            actions: ['guessWord', 'endRound'],
+            cond: noMoreWords
           },
           SHOW_WORD: {
             actions: ['guessWord'],
@@ -73,11 +86,10 @@ const game = {
       on: {
         ...quitGameTransition,
         CONTINUE: {
-          SHOW_PHASE_RESULTS: {
+          READY_PLAYERS: {
             actions: ['nextPhase']
           },
         },
-        NEXT_ROUND: 'READY_PLAYERS'
       }
     }
   },
