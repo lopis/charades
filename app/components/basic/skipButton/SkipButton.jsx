@@ -1,11 +1,12 @@
 import React from 'react'
 
 import {Button} from '../'
-import styles from './styles'
+import styles from '../guessButton/styles'
 
 const SkipButton = (props) => {
   return <Button
     style={styles}
+    className="btnBlue"
     {...props}>
     &times;
   </Button>

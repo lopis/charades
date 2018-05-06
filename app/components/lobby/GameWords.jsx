@@ -35,11 +35,12 @@ class GameWords extends PureComponent {
         <h3>{machineState.toString()}</h3>
         <div style={{flexGrow: 1}}>
           {this.renderWordList()}
+          <br/>
+          <input type="text"
+            autoFocus="autoFocus"
+            key={`newPlayer_${words.length}`}
+            onBlur={this.onWordCreate} />
         </div>
-        <input type="text"
-          autoFocus="autoFocus"
-          key={`newPlayer_${words.length}`}
-          onBlur={this.onWordCreate} />
         <Button onClick={onContinue}>Start Game</Button>
       </VerticalLayout>
     )

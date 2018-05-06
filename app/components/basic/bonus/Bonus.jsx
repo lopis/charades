@@ -2,7 +2,7 @@ import React from 'react'
 
 const style = {
   fontSize: '5vh',
-  background: 'linear-gradient(4deg, rgb(250, 85, 63), rgb(241, 215, 0)) repeat scroll 0% 0%',
+  background: 'linear-gradient(to right top, #38438b, #944b94, #d75a88, #ff7e71, #ffb25f, #ffeb68)',
   padding: '3vh',
   gridArea: '2 / 4 / 2 / 3',
   alignSelf: 'self-start',

@@ -1,7 +1,15 @@
+const colors = {
+  primary: '#f84e41',
+  middle: '#de3f74',
+  highlight: '#aa4b91',
+  dark: '#6c5493',
+  darker: '#3c527b',
+  darkest: '#2f4858',
+}
+
 const style = {
   button: {
     minHeight: 50,
-    backgroundColor: '#38c742',
     padding: 10,
     borderRadius: 5,
     justifyContent: 'center',
@@ -9,15 +17,12 @@ const style = {
     color: 'white',
     fontSize: 18,
     border: 'none',
-    background: 'linear-gradient(45deg, rgb(250, 63, 79), rgb(241, 89, 0))',
+    background: `linear-gradient(40deg, ${colors.primary}, ${colors.middle})`,
     borderRadius: 50,
     margin: 2,
   },
-  btnRed: {
-    background: 'linear-gradient(45deg, rgb(250, 63, 79), rgb(241, 89, 0))',
-  },
   btnBlue: {
-    background: 'linear-gradient(45deg, rgb(30, 131, 254), rgb(0, 186, 241))',
+    background: `linear-gradient(40deg, ${colors.dark}, ${colors.darker})`,
   },
 }
 
