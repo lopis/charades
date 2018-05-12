@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Button, VerticalLayout } from '../../components'
+import { Button, VerticalLayout, Logo } from '../../components'
 
 export default class MenuLayout extends PureComponent {
     constructor(){
@@ -31,7 +31,9 @@ export default class MenuLayout extends PureComponent {
 
         return (
             <VerticalLayout>
-                <span>Charades</span>
+                <div>
+                  <Logo />
+                </div>
                 {this.makeMenu(menuEntries)}
             </VerticalLayout>
         )

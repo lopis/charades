@@ -1,29 +1,33 @@
-const colors = {
-  primary: '#f84e41',
-  middle: '#de3f74',
-  highlight: '#aa4b91',
-  dark: '#6c5493',
-  darker: '#3c527b',
-  darkest: '#2f4858',
+import { css } from 'styled-components'
+import colors from '../../../constants/colors'
+
+const getBackground = props => {
+  return props.blue ?
+    `linear-gradient(40deg, ${colors.dark}, ${colors.darker})` :
+    `linear-gradient(40deg, ${colors.primary}, ${colors.middle})`
 }
 
-const style = {
-  button: {
-    minHeight: 50,
-    padding: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: 18,
-    border: 'none',
-    background: `linear-gradient(40deg, ${colors.primary}, ${colors.middle})`,
-    borderRadius: 50,
-    margin: 2,
-  },
-  btnBlue: {
-    background: `linear-gradient(40deg, ${colors.dark}, ${colors.darker})`,
-  },
-}
+const btn = css`
+  padding: 2vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: inherit;
+  border: none;
+  border-radius: 10vh;
+  margin: 0.5vh;
+  background: ${props => getBackground(props)};
+`
 
-export default style
+
+const btnRound = css`
+  color: white;
+  font-size: ${({small}) => small ? '5vw' : '8vw'};
+  height: ${({small}) => small ? '10vw' : '14vw'};
+  width: ${({small}) => small ? '10vw' : '14vw'};
+  border-radius: 10vw;
+  margin: 0.5vw;
+`
+
+export { btn }
+export { btnRound }

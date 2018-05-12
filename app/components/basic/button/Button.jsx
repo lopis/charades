@@ -1,12 +1,16 @@
 import React from 'react'
+import s from 'styled-components'
 
-import styles from './styles'
+import { btn, btnBlue } from './styles'
 
-const Button = ({onClick, className, style, ...props}) => {
-  return <button
-    style={Object.assign({}, styles.button, styles[className], style)}
-    onClick={onClick}
-    {...props}/>
+const _button = s.button`${btn}`
+
+const Button = ({blue, ...props}) => {
+  if (blue) {
+    _button.extend(btnBlue)
+  }
+
+  return <_button {...props}/>
 }
 
 export { Button }

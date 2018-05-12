@@ -1,7 +1,13 @@
 import React, { PureComponent } from 'react'
 
-import { GridLayout, GridCell } from '../basic/GridLayout'
-import { Button, SkipButton, GuessButton, Bonus } from '../basic'
+import {
+  Bonus,
+  Button,
+  GridCell,
+  GridLayout,
+  RoundButton,
+  Timer,
+} from '../basic'
 
 const ShowWord = (props) => {
   const {
@@ -16,7 +22,7 @@ const ShowWord = (props) => {
   } = props
 
   return (
-    <GridLayout columns={['20%', '30%', '50%']} rows={['20%', '60%', '20%']}>
+    <GridLayout columns={[2, 3, 5]} rows={[2, 6, 2]}>
       <GridCell area={[1, 1, 2, 3]}>
         <span>Your word is</span>
       </GridCell>
@@ -28,11 +34,8 @@ const ShowWord = (props) => {
         <div><span>{score}</span> pts</div>
       </GridCell>
       <GridCell area={[2, 1, 3, 2]}>
-        <GuessButton onClick={() => transition('GUESS')} />
-        <SkipButton onClick={() => transition('SKIP')} />
-        {/* <Button onClick={() => transition('TIMES_UP')}>
-          TIME'S UP
-        </Button> */}
+        <RoundButton onClick={() => transition('GUESS')}>&#10003;</RoundButton>
+        <RoundButton blue onClick={() => transition('SKIP')}>&times;</RoundButton>
         {/* <Button onClick={() => transition('QUIT_GAME')}>
           Quit to menu
         </Button> */}
@@ -54,6 +57,9 @@ const ShowWord = (props) => {
         <div>
           phase {phase}
         </div>
+      </GridCell>
+      <GridCell area={[3, 4, 4, 3]} place='end'>
+        <Timer onTimeout={() => transition('TIMES_UP')}/>
       </GridCell>
     </GridLayout>
   )

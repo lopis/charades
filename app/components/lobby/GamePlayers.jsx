@@ -1,7 +1,16 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout } from '../basic/VerticalLayout'
-import { Button } from '../index'
+import {
+  GridLayout,
+  GridCell,
+  RoundButton,
+  LobbyTitle,
+  Button,
+  PlayerLabel,
+} from '../basic'
+import {
+  TextInput
+} from '../input'
 
 class GamePlayers extends PureComponent {
   onPlayerCreate = (event) => {
@@ -26,34 +35,44 @@ class GamePlayers extends PureComponent {
 
   createForm = (players = []) => {
     return players.map((player, i) => (
-      <div type="text"
+      <PlayerLabel type="text"
         key={player.id}
+        player={player}
         data-player-id={player.id}
         onChange={this.onPlayerChange}>
-        {player.name}
-      </div>
+      </PlayerLabel>
     ))
   }
 
 
 
   render () {
-    const {machineState, onContinue} = this.props
+    const {machineState, onContinue, onQuit} = this.props
     const players = this.props.players || []
     return (
-      <VerticalLayout>
-        <h1>Lobby</h1>
-        <h2>Ready Players</h2>
-        <h3>{machineState.toString()}</h3>
-        <div style={{flexGrow: 1}}>
-          {this.createForm(players)}
-        </div>
-        <input type="text"
-          autoFocus="autoFocus"
-          key={`newPlayer_${players.length}`}
-          onBlur={this.onPlayerCreate} />
-        <Button onClick={onContinue}>Start Game</Button>
-      </VerticalLayout>
+      <GridLayout rows={[2, 8]} columns={[6]}>
+        <GridCell area={[1, 1, 2, 2]}>
+          <LobbyTitle>
+            Who's playing?
+          </LobbyTitle>
+        </GridCell>
+        <GridCell area={[2, 1, 3, 3]} place='start' style={{maxHeight: '100%', overflow: 'auto'}}>
+          <div style={{display: 'grid', maxHeight: '100%', gridTemplate: 'repeat(1, 1fr) / repeat(3, 1fr)'}}>
+            {this.createForm(players)}
+          </div>
+        </GridCell>
+        <GridCell area={[3, 1, 4, 2]} place='center start'>
+          <TextInput type="text"
+            autoFocus="autoFocus"
+            placeholder="new player name"
+            key={`newPlayer_${players.length}`}
+            onBlur={this.onPlayerCreate} />
+        </GridCell>
+        <GridCell area={[3, 2, 4, 3]}>
+          <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
+          <RoundButton onClick={onContinue}>→</RoundButton>
+        </GridCell>
+      </GridLayout>
     )
   }
 }

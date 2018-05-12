@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout } from '../basic/VerticalLayout'
-import { Button } from '../index'
+import { VerticalLayout, Button } from '../basic'
 
 class GameWords extends PureComponent {
   onWordCreate = (event) => {
