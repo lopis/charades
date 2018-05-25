@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import s from 'styled-components'
 
 import {
   Bonus,
@@ -7,11 +8,12 @@ import {
   GridLayout,
   RoundButton,
   Timer,
+  LobbyTitle,
 } from '../basic'
 
 const ShowWord = (props) => {
   const {
-    word = '',
+    word = {name: ''},
     transition,
     score,
     machineState,
@@ -24,7 +26,7 @@ const ShowWord = (props) => {
   return (
     <GridLayout columns={[2, 3, 5]} rows={[2, 6, 2]}>
       <GridCell area={[1, 1, 2, 3]}>
-        <span>Your word is</span>
+        <LobbyTitle>Your word is</LobbyTitle>
       </GridCell>
       <GridCell area={[1, 3, 2, 4]}>
         <div>Players</div>
@@ -40,7 +42,7 @@ const ShowWord = (props) => {
           Quit to menu
         </Button> */}
       </GridCell>
-      <GridCell area={[2, 2, 3, 4]} style={{fontSize: '12vh'}}>
+      <GridCell area={[2, 2, 3, 4]} style={{fontSize: word.name.length > 10 ? '4vw' : '8vw'}}>
         <span>
           {word.name}
         </span>

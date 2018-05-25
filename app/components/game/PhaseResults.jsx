@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout, Button } from '../basic'
+import { VerticalLayout, Button, PlayerLabel } from '../basic'
 
 class PhaseResults extends PureComponent {
   render () {
@@ -13,11 +13,10 @@ class PhaseResults extends PureComponent {
           {scoreboard.phases[phase] &&
             players.map(player => {
               const score = scoreboard.phases[phase][player.id]
-              return <p key={player.id}>
-                <strong>Player {player.name}:</strong>
-                <br/>
-                {score || 0} points
-              </p>
+              console.log(scoreboard, phase, player.id);
+              return <PlayerLabel key={player.id}
+                player={player}
+                value={score || 0}/>
           })}
         </div>
         <Button onClick={onContinue}>

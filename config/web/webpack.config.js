@@ -14,11 +14,17 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        rules: [{
-            test: /\.(js|jsx|web.js)$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        }]
+        rules: [
+            {
+                test: /\.(js|jsx|web.js)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }
+        ]
     },
     resolve: {
         extensions: ['.js', '.jsx', '.web.js']

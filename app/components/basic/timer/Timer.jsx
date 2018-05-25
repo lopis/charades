@@ -1,10 +1,14 @@
 import React, {PureComponent} from 'react'
+import s from 'styled-components'
 
-import styles from './styles'
+import {timer, timerContainer} from './styles'
 
 const START_TIME = 60
-const REFRESH_RATE = 10 * 1000
+const REFRESH_RATE = 1 * 1000
 const TICK = 1
+
+const TimerContainer = s.div`${timerContainer}`
+const TimerBody = s.div`${timer}`
 
 class Timer extends PureComponent {
   constructor(props) {
@@ -45,9 +49,11 @@ class Timer extends PureComponent {
 
   render() {
     return (
-      <div style={styles}>
-        <span>{this.state.time}</span>
-      </div>
+      <TimerContainer>
+        <TimerBody>
+          <span>{this.state.time}</span>
+        </TimerBody>
+      </TimerContainer>
     )
   }
 }

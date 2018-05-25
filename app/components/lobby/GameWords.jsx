@@ -1,49 +1,60 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout, Button } from '../basic'
+import {
+  GridLayout,
+  GridCell,
+  RoundButton,
+  LobbyTitle,
+  Button,
+  PlayerLabel,
+  WordPackLabel
+} from '../basic'
+import { TextInput } from '../input'
+import * as game from '../../helpers/game'
 
-class GameWords extends PureComponent {
-  onWordCreate = (event) => {
-    const value = event.target.value || ''
-    if (value.length > 0) {
+class GameWordsComponent extends PureComponent {
+  selectWordPack = (pack = {}) => {
+    console.log('pack', pack);
+    if (pack.words && pack.words.length > 0) {
       this.props.transition(
-        'CREATE_WORD',
-        {word: event.target.value}
+        'SELECT_WORDS',
+        {words: pack.words}
       )
     }
   }
 
-  renderWordList = () => {
-    const words = this.props.words || []
-    return words.map((word, i) => (
-      <span type="text"
-        key={word.id}
-        data-word-id={word.id}
-        onChange={this.onWordChange}>
-        {word.name}
-      </span>
+  renderWordPacks = () => {
+    const packs = this.props.wordPacks || []
+    return packs.map((pack, i) => (
+      <WordPackLabel type="text"
+        key={i}
+        title={pack.name}
+        description={pack.decription}
+        onClick={() => this.selectWordPack(pack)} />
     ))
   }
 
   render () {
-    const {machineState, onContinue, words} = this.props
+    const {machineState, onContinue, onQuit} = this.props
     return (
-      <VerticalLayout>
-        <h1>Game Words</h1>
-        <h2>Add your words</h2>
-        <h3>{machineState.toString()}</h3>
-        <div style={{flexGrow: 1}}>
-          {this.renderWordList()}
-          <br/>
-          <input type="text"
-            autoFocus="autoFocus"
-            key={`newPlayer_${words.length}`}
-            onBlur={this.onWordCreate} />
-        </div>
-        <Button onClick={onContinue}>Start Game</Button>
-      </VerticalLayout>
+      <GridLayout rows={[2, 8]} columns={[6]}>
+        <GridCell area={[1, 1, 2, 2]}>
+          <LobbyTitle>
+            Pick a word pack
+          </LobbyTitle>
+        </GridCell>
+        <GridCell area={[2, 1, 3, 3]} style={{maxHeight: '100%', overflow: 'auto'}}>
+          {this.renderWordPacks()}
+        </GridCell>
+        <GridCell area={[3, 2, 4, 3]}>
+          <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
+          <RoundButton onClick={onContinue}>→</RoundButton>
+        </GridCell>
+      </GridLayout>
     )
   }
 }
+
+const GameWords = game.wordPackFetcher(GameWordsComponent)
 
 export { GameWords }

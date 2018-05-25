@@ -13,25 +13,7 @@ class GameLobby extends PureComponent {
   constructor (props) {
     super()
 
-    this.state = {
-      players: props.players || [],
-      words: props.words || [],
-    }
-
-    if (props._debugSkipIntro) {
-      props.transition('SKIP_INTRO')
-    }
-  }
-
-  startGame = () => {
-    this.setState({
-      players: this.props.players || [],
-      words: this.props.words || [],
-    })
-
-    if (props._debugSkipIntro) {
-      props.transition('SKIP_INTRO')
-    }
+    this.state = {}
   }
 
   gameComponentMap = {
@@ -39,6 +21,13 @@ class GameLobby extends PureComponent {
     GAME_WORDS: GameWords,
     GAME_PLAY: GameManager,
     GAME_END: GameEnd,
+  }
+
+  selectWords = () => {
+    this.setState(() => ({
+      players: this.props.players || [],
+      words: this.props.words,
+    }), this.onContinue)
   }
 
   getGameComponent = () => {
@@ -62,28 +51,11 @@ class GameLobby extends PureComponent {
     })
   }
 
-  createWord = () => {
-    this.setState({
-      words: this.state.words.concat([{
-        id: Date.now(),
-        name: this.props.word
-      }])
-    })
-  }
-
-  removeWord = () => {
-    this.setState({
-      words: this.state.words.filter(p => {
-        return p.id != this.props.wordId
-      })
-    })
-  }
-
   onContinue = () => {
     this.props.transition('CONTINUE')
   }
 
-  quitGame = () => {
+  onQuit = () => {
     this.props.stopGame()
   }
 
@@ -93,6 +65,7 @@ class GameLobby extends PureComponent {
 
     return React.createElement(element, {
       onContinue: this.onContinue,
+      onQuit: this.onQuit,
       ...this.props,
       ...this.state
     })

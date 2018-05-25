@@ -1,4 +1,4 @@
-import { getCurrentPage } from '../../helpers/game'
+import { getCurrentPage, wordPackFetcher } from '../../helpers/game'
 
 const AppFrame = ({appState}) => {
 

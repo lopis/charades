@@ -11,19 +11,9 @@ const preloadedState = {
   appState: appStates.MAIN_MENU,
   // _debugSkipIntro: true,
   players: [
-    {id: 1, name: 'John'},
-    {id: 2, name: 'Mary'},
-    {id: 3, name: 'Alex'},
-  ],
-  words: [
-    {id: 1, name: '🐕 dog'},
-    {id: 2, name: '🐈 cat'},
-    {id: 3, name: '🐖 pig'},
-    {id: 4, name: '🐄 cow'},
-    {id: 5, name: '🐦 bird'},
-    {id: 6, name: '🐴 horse'},
-    {id: 7, name: '🐟 fish'},
-    {id: 8, name: '🐯 tiger'},
+    {id: 'p1', name: 'John'},
+    {id: 'p2', name: 'Mary'},
+    {id: 'p3', name: 'Alex'},
   ]
 }
 const store = createStore(reducer, preloadedState)

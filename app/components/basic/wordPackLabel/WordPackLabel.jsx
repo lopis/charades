@@ -3,23 +3,20 @@ import s from 'styled-components'
 
 import {container, name, badge, picture} from './styles'
 
-const PlayerLabel = ({player, value}) => {
+const WordPackLabel = ({title, description, onClick}) => {
   const Container = s.div`${container}`
   const Name = s.div`${name}`
-  const Badge = s.div`${badge}`
   const Picture = s.div`${picture}`
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Picture />
       <Name>
-        {player.name}
+        {title}
       </Name>
-      {value !== undefined && (
-        <Badge>{value}</Badge>
-      )}
+      {description}
     </Container>
   )
 }
 
-export { PlayerLabel }
+export { WordPackLabel }

@@ -38,7 +38,6 @@ class GamePlayers extends PureComponent {
       <PlayerLabel type="text"
         key={player.id}
         player={player}
-        data-player-id={player.id}
         onChange={this.onPlayerChange}>
       </PlayerLabel>
     ))

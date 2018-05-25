@@ -25,9 +25,6 @@ const gameLobbyState = {
         GAME_PLAYERS: {
           actions: ['createPlayer']
         }
-      },
-      SKIP_INTRO: {
-        GAME_PLAY: 'startGame'
       }
     }
   }
@@ -37,14 +34,12 @@ const gameWordsState = {
   GAME_WORDS: {
     on: {
       ...quitGameTransition,
-      CREATE_WORD: {
+      SELECT_WORDS: {
         GAME_WORDS: {
-          actions: ['createWord']
+          actions: ['selectWords']
         }
       },
-      CONTINUE: {
-        GAME_PLAY: 'startGame'
-      }
+      CONTINUE: 'GAME_PLAY'
     }
   }
 }

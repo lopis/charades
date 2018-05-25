@@ -6,6 +6,7 @@ const container = css`
   box-shadow: 0.5vw 0.5vw 0.5vw 0 rgba(0,0,0,0.2);
   display: flex;
   width: 30vw;
+  height: 30vw;
   box-sizing: border-box;
   margin: 1vw;
   border-radius: 5vw 0.5vw 0.5vw 5vw;
@@ -26,17 +27,6 @@ const picture = css`
   margin-right: 1vw;
 `
 
-const badge = css`
-  background: ${colors.darkest};
-  color: white;
-  border-radius: 5vw;
-  width: 5vw;
-  height: 5vw;
-  text-align: center;
-  line-height: 5vw;
-`
-
 export { container }
 export { name }
 export { picture }
-export { badge }

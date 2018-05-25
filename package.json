@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test:native": "jest --config \"./config/native/jest.config.js\"",
     "test:web": "jest --config \"./config/web/jest.config.js\"",
-    "web": "webpack-dev-server --config \"./config/web/webpack.config.js\"",
+    "web": "webpack-dev-server --host 0.0.0.0 --config \"./config/web/webpack.config.js\"",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "stats": "webpack --config \"./config/web/webpack.config.js\" --json > stats.json"
@@ -31,6 +31,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-native": "4.0.0",
     "jest": "21.2.1",
+    "json-loader": "^0.5.7",
     "react-test-renderer": "16.0.0-beta.5",
     "redux-devtools-extension": "^2.13.2",
     "webpack": "^3.8.1",
