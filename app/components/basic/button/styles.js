@@ -2,9 +2,9 @@ import { css } from 'styled-components'
 import colors from '../../../constants/colors'
 
 const getBackground = props => {
-  return props.blue ?
-    `linear-gradient(40deg, ${colors.dark}, ${colors.darker})` :
-    `linear-gradient(40deg, ${colors.primary}, ${colors.middle})`
+  return props.disabled ? `lightgray`
+    : props.blue ? `linear-gradient(40deg, ${colors.dark}, ${colors.darker})`
+    : `linear-gradient(40deg, ${colors.primary}, ${colors.middle})`
 }
 
 const btn = css`

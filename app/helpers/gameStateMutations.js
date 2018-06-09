@@ -1,4 +1,9 @@
 import shuffle from '../helpers/shuffle'
+import {
+  POINTS_PER_GUESS,
+  POINTS_PER_SKIP,
+  POINTS_BONUS
+} from '../constants/values'
 
 export const getInitialState = (props) => ({
   players: shuffle(props.players || []),
@@ -68,7 +73,7 @@ export const getNextWordState = ({words = []}) => ({
 })
 
 export const getGuessWordState = ({word, words, guessedWords = [], score}) => {
-  score = score + 1 + (word.bonus || 0)
+  score = score + POINTS_PER_GUESS + (word.bonus || 0)
   word.bonus = 0
   word.state = 'guessed'
 
@@ -80,10 +85,10 @@ export const getGuessWordState = ({word, words, guessedWords = [], score}) => {
 
 export const getSkipWordState = (state) => {
   const {word, skippedWords = [], score} = state
-  word.bonus = (word.bonus || 0) + 1
+  word.bonus = (word.bonus || 0) + POINTS_BONUS
 
   return {
     skippedWords: skippedWords.concat([word]),
-    score: score - 1
+    score: score - POINTS_PER_SKIP
   }
 }

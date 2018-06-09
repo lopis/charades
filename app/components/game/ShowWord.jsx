@@ -25,7 +25,7 @@ const ShowWord = (props) => {
 
   return (
     <GridLayout columns={[2, 3, 5]} rows={[2, 6, 2]}>
-      <GridCell area={[1, 1, 2, 3]}>
+      <GridCell area={[1, 1, 2, 3]} place="start">
         <LobbyTitle>Your word is</LobbyTitle>
       </GridCell>
       <GridCell area={[1, 3, 2, 4]}>
@@ -33,16 +33,14 @@ const ShowWord = (props) => {
         <div>
           <strong>{player1.name}</strong> | <strong>{player2.name}</strong>
         </div>
-        <div><span>{score}</span> pts</div>
+        <div><span>{score}</span> pts | round {round} | phase {phase}</div>
       </GridCell>
-      <GridCell area={[2, 1, 3, 2]}>
+      <GridCell area={[2, 1, 4, 2]}>
         <RoundButton onClick={() => transition('GUESS')}>&#10003;</RoundButton>
         <RoundButton blue onClick={() => transition('SKIP')}>&times;</RoundButton>
-        {/* <Button onClick={() => transition('QUIT_GAME')}>
-          Quit to menu
-        </Button> */}
       </GridCell>
-      <GridCell area={[2, 2, 3, 4]} style={{fontSize: word.name.length > 10 ? '4vw' : '8vw'}}>
+      <GridCell area={[2, 2, 4, 4]} place="center start"
+        style={{fontSize: word.name.length > 15 ? '4vw' : '8vw'}}>
         <span>
           {word.name}
         </span>
@@ -52,14 +50,6 @@ const ShowWord = (props) => {
           {word.bonus}
         </Bonus>
       ) : ''}
-      <GridCell>
-        <div>
-          round {round}
-        </div>
-        <div>
-          phase {phase}
-        </div>
-      </GridCell>
       <GridCell area={[3, 4, 4, 3]} place='end'>
         <Timer onTimeout={() => transition('TIMES_UP')}/>
       </GridCell>

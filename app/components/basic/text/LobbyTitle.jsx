@@ -6,5 +6,5 @@ const style = {
 }
 
 export const LobbyTitle = (props) => {
-  return <h1 style={style} {...props}></h1>
+  return <div style={style} {...props}></div>
 }

@@ -6,11 +6,11 @@ import {
   RoundButton,
   LobbyTitle,
   Button,
-  PlayerLabel,
   WordPackLabel
 } from '../basic'
 import { TextInput } from '../input'
 import * as game from '../../helpers/game'
+import { filterWords } from '../../helpers/shuffle'
 
 class GameWordsComponent extends PureComponent {
   selectWordPack = (pack = {}) => {
@@ -18,7 +18,7 @@ class GameWordsComponent extends PureComponent {
     if (pack.words && pack.words.length > 0) {
       this.props.transition(
         'SELECT_WORDS',
-        {words: pack.words}
+        {words: filterWords(pack.words, this.props.players)}
       )
     }
   }
@@ -43,12 +43,17 @@ class GameWordsComponent extends PureComponent {
             Pick a word pack
           </LobbyTitle>
         </GridCell>
-        <GridCell area={[2, 1, 3, 3]} style={{maxHeight: '100%', overflow: 'auto'}}>
+        <GridCell area={[2, 1, 4, 2]} place="start"
+          style={{maxHeight: '100%', display: 'flex', overflow: 'auto', flexWrap: 'wrap'}}>
+          {this.renderWordPacks()}
+          {this.renderWordPacks()}
+          {this.renderWordPacks()}
+          {this.renderWordPacks()}
           {this.renderWordPacks()}
         </GridCell>
         <GridCell area={[3, 2, 4, 3]}>
           <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
-          <RoundButton onClick={onContinue}>→</RoundButton>
+          <RoundButton disabled onClick={onContinue}>→</RoundButton>
         </GridCell>
       </GridLayout>
     )

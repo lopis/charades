@@ -3,30 +3,41 @@ import colors from '../../../constants/colors'
 
 const container = css`
   padding: 1vw;
-  box-shadow: 0.5vw 0.5vw 0.5vw 0 rgba(0,0,0,0.2);
-  display: flex;
-  width: 30vw;
-  height: 30vw;
-  box-sizing: border-box;
+  box-shadow: 0.5vw 0.5vw 0 0 rgba(0,0,0,0.2);
+  width: 20vw;
+  height: 20vw;
   margin: 1vw;
-  border-radius: 5vw 0.5vw 0.5vw 5vw;
-  border: 0.5vw solid ${colors.dark};
+  box-sizing: border-box;
+  background: linear-gradient(to right top, ${colors.dark}, ${colors.highlight});
   place-items: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `
 
 const name = css`
-  color: ${colors.dark};
+  color: white;
+  margin: 2vw 0;
+`
+
+const pictureContainer = css`
+  height: 10vw;
+  width: 100%;
   flex-grow: 1;
+  display: flex;
+  place-content: center;
+  place-items: center;
 `
 
 const picture = css`
-  height: 5vw;
-  width: 5vw;
-  border-radius: 3vw;
-  background: ${colors.dark};
-  margin-right: 1vw;
+  height: 10vw;
+  width: 10vw;
+  background: white;
+  border-radius: 20vw;
+  margin: 1vw;
 `
 
 export { container }
 export { name }
+export { pictureContainer }
 export { picture }

@@ -50,7 +50,7 @@ class GamePlayers extends PureComponent {
     const players = this.props.players || []
     return (
       <GridLayout rows={[2, 8]} columns={[6]}>
-        <GridCell area={[1, 1, 2, 2]}>
+        <GridCell area={[1, 1, 2, 2]} place="start">
           <LobbyTitle>
             Who's playing?
           </LobbyTitle>

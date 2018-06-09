@@ -1,10 +1,11 @@
 import React, {PureComponent} from 'react'
 import s from 'styled-components'
 
-import {timer, timerContainer} from './styles'
+import { timer, timerContainer } from './styles'
+import { SECONDS_PER_ROUND } from '../../../constants/values'
 
-const START_TIME = 60
-const REFRESH_RATE = 1 * 1000
+const START_TIME = SECONDS_PER_ROUND
+const REFRESH_RATE = 1000
 const TICK = 1
 
 const TimerContainer = s.div`${timerContainer}`
