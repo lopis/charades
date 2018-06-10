@@ -13,7 +13,9 @@ class GameLobby extends PureComponent {
   constructor (props) {
     super()
 
-    this.state = {}
+    this.state = {
+      players: props.players || []
+    }
   }
 
   gameComponentMap = {

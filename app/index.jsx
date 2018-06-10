@@ -11,9 +11,9 @@ const preloadedState = {
   appState: appStates.MAIN_MENU,
   // _debugSkipIntro: true,
   players: [
-    {id: 'p1', name: 'John'},
-    {id: 'p2', name: 'Mary'},
-    {id: 'p3', name: 'Alex'},
+    {id: 'p1', name: 'Muffintop'},
+    {id: 'p2', name: 'Jellybean'},
+    {id: 'p3', name: 'Cinnamon'},
   ]
 }
 const store = createStore(reducer, preloadedState)

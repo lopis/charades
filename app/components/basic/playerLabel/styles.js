@@ -34,6 +34,7 @@ const badge = css`
   height: 5vw;
   text-align: center;
   line-height: 5vw;
+  font-size: 0.7em;
 `
 
 export { container }

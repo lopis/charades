@@ -25,6 +25,11 @@ const gameLobbyState = {
         GAME_PLAYERS: {
           actions: ['createPlayer']
         }
+      },
+      REMOVE_PLAYER: {
+        GAME_PLAYERS: {
+          actions: ['removePlayer']
+        }
       }
     }
   }
