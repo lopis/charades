@@ -2,7 +2,9 @@ const notPlayingState = {
   NOT_PLAYING: {
     on: {
       START_GAME: {
-        GAME_PLAYERS: 'startGame'
+        GAME_PLAYERS: {
+          actions: ['startGame']
+        }
       }
     }
   }
@@ -17,9 +19,10 @@ const quitGameTransition = {
 const gameLobbyState = {
   GAME_PLAYERS: {
     on: {
-      ...quitGameTransition,
       CONTINUE: {
-        GAME_WORDS: 'collectWords'
+        GAME_WORDS: {
+          actions: ['collectWords']
+        }
       },
       CREATE_PLAYER: {
         GAME_PLAYERS: {
@@ -38,7 +41,6 @@ const gameLobbyState = {
 const gameWordsState = {
   GAME_WORDS: {
     on: {
-      ...quitGameTransition,
       SELECT_WORDS: {
         GAME_WORDS: {
           actions: ['selectWords']
@@ -52,9 +54,10 @@ const gameWordsState = {
 const gamePlayState = {
   GAME_PLAY: {
     on: {
-      ...quitGameTransition,
       GAME_OVER: {
-        GAME_END: 'gameOver'
+        GAME_END: {
+          actions: ['gameOver']
+        }
       }
     }
   }
@@ -69,7 +72,9 @@ const gameEndState = {
         }
       },
       NEW_GAME: {
-        GAME_PLAYERS: 'startGame'
+        GAME_PLAYERS: {
+          actions: ['startGame']
+        }
       }
     }
   }

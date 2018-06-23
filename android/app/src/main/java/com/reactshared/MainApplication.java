@@ -1,4 +1,4 @@
-package com.reactshared;
+package com.lopis.charades;
 
 import android.app.Application;
 

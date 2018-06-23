@@ -1,5 +1,6 @@
 import React from 'react'
 import colors from '../../../constants/colors'
+import { Box } from '../box/Box'
 
 const style = {
   textAlign: 'center',
@@ -15,9 +16,9 @@ const style = {
 const Logo = (props) => {
 
   return (
-    <div style={style}>
+    <Box style={style}>
       CHARADES
-    </div>
+    </Box>
   )
 }
 

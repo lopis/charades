@@ -7,7 +7,7 @@ import { btn, btnBlue, btnText } from './styles'
 const _button = s.View`${btn}`
 const _text = s.Text`${btnText}`
 
-const Button = ({onClick, children, ...props}) => {
+const RoundButton = ({onClick, children, ...props}) => {
   return <TouchableNativeFeedback
     background={TouchableNativeFeedback.SelectableBackground()}
     onPress={onClick}>
@@ -17,4 +17,4 @@ const Button = ({onClick, children, ...props}) => {
   </TouchableNativeFeedback>
 }
 
-export default Button
+export { RoundButton }

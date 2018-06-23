@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import {
   GridLayout,
   GridCell,
+  GridRepeatLayout,
   RoundButton,
   LobbyTitle,
   Button,
@@ -73,9 +74,9 @@ class GamePlayers extends PureComponent {
           </LobbyTitle>
         </GridCell>
         <GridCell area={[2, 1, 3, 3]} place='start' style={{maxHeight: '100%', overflow: 'auto'}}>
-          <div style={{display: 'grid', maxHeight: '100%', gridTemplate: 'repeat(1, 1fr) / repeat(3, 1fr)'}}>
+          <GridRepeatLayout template={[1, 3]}>
             {this.createForm(players)}
-          </div>
+          </GridRepeatLayout>
         </GridCell>
         <GridCell area={[3, 1, 4, 2]} place='center start'>
           <TextInput type="text"

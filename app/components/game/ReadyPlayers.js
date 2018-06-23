@@ -4,7 +4,8 @@ import {
   GridLayout,
   GridCell,
   LobbyTitle,
-  RoundButton
+  RoundButton,
+  PlayerVs
 } from '../basic'
 
 class ReadyPlayers extends PureComponent {
@@ -15,8 +16,6 @@ class ReadyPlayers extends PureComponent {
       return null
     }
 
-    const fontSize = player1.length + player2.length > 15 ? '4vw' : '8vw'
-
     return (
       <GridLayout columns={[2, 3, 5]} rows={[2, 6, 2]}>
         <GridCell area={[1, 1, 2, 3]} place="start">
@@ -24,9 +23,7 @@ class ReadyPlayers extends PureComponent {
         </GridCell>
         <GridCell area={[2, 1, 3, 4]}>
           Get Ready!
-          <div style={{fontSize: fontSize}}>
-            <strong>{player1.name}</strong> & <strong>{player2.name}</strong>
-          </div>
+          <PlayerVs player1={player1} player2={player2} />
         </GridCell>
         <GridCell area={[4, 1, 3, 4]} place="end">
           <RoundButton small blue onClick={onQuit}>&times;</RoundButton>

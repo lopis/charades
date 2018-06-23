@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box } from '../box/Box'
 
 const style = {
   fontSize: '5vh',
@@ -12,9 +13,9 @@ const style = {
 }
 
 const Bonus = ({children}) => {
-  return <div style={style}>
+  return <Box style={style}>
     ✨ +{children}
-  </div>
+  </Box>
 }
 
 export { Bonus }

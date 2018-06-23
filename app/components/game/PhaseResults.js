@@ -1,6 +1,12 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout, Button, PlayerLabel } from '../basic'
+import {
+  VerticalLayout,
+  Button,
+  PlayerLabel,
+  Header,
+  FlexGrow
+} from '../basic'
 
 class PhaseResults extends PureComponent {
   render () {
@@ -8,8 +14,8 @@ class PhaseResults extends PureComponent {
 
     return (
       <VerticalLayout>
-        <h1>Phase {phase +1} results</h1>
-        <div style={{flexGrow: 1}}>
+        <Header>Phase {phase +1} results</Header>
+        <FlexGrow>
           {scoreboard.phases[phase] &&
             players.map(player => {
               const score = scoreboard.phases[phase][player.id]
@@ -17,7 +23,7 @@ class PhaseResults extends PureComponent {
                 player={player}
                 value={score || 0}/>
           })}
-        </div>
+        </FlexGrow>
         <Button onClick={onContinue}>
           Next Phase
         </Button>

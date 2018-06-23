@@ -60,6 +60,7 @@ class GameWordsComponent extends PureComponent {
   }
 }
 
-const GameWords = game.wordPackFetcher(GameWordsComponent)
+// const GameWords = game.wordPackFetcher(GameWordsComponent)
+const GameWords = GameWordsComponent
 
 export { GameWords }

@@ -1,6 +1,13 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout, Button } from '../basic'
+import {
+  VerticalLayout,
+  Button,
+  Header,
+  Header2,
+  Header3,
+  Bold
+} from '../basic'
 
 class RoundResults extends PureComponent {
   render () {
@@ -8,13 +15,13 @@ class RoundResults extends PureComponent {
 
     return (
       <VerticalLayout>
-        <h1>Time's up!</h1>
-        <p>
-          Players <strong>{player1.name}</strong> and <strong>{player2.name}</strong>
-        </p>
-        <p>
+        <Header>Time's up!</Header>
+        <Header2>
+          Players <Bold>{player1.name}</Bold> and <Bold>{player2.name}</Bold>
+        </Header2>
+        <Header3>
           Your score was {score} points.
-        </p>
+        </Header3>
         <Button onClick={onContinue}>
           Next round
         </Button>

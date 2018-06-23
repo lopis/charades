@@ -14,7 +14,7 @@ export default class MenuLayout extends PureComponent {
       <Button
         key={entry.key}
         style={styles.button}
-        onPress={entry.onClick}>
+        onClick={entry.onClick}>
         <Text style={styles.text}>{entry.label}</Text>
       </Button>
     ))

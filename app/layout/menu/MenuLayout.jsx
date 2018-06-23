@@ -19,7 +19,6 @@ export default class MenuLayout extends PureComponent {
       return entries.map(entry => (
         <Button
           key={entry.key}
-          style={{marginBottom: 10}}
           onClick={entry.onClick}>
             <span>{entry.label}</span>
         </Button>

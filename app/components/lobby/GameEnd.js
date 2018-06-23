@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import { VerticalLayout, Button } from '../basic'
+import { VerticalLayout, Button, Header, Header2 } from '../basic'
 
 class GameEnd extends PureComponent {
   render () {
@@ -8,8 +8,7 @@ class GameEnd extends PureComponent {
 
     return (
       <VerticalLayout>
-        <h1>Game Over!</h1>
-        <h3>{machineState.toString()}</h3>
+        <Header>Game Over!</Header>
         <Button onClick={() => this.props.transition('NEW_GAME')}>
           Start new game
         </Button>

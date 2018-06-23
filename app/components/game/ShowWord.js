@@ -9,6 +9,7 @@ import {
   RoundButton,
   Timer,
   LobbyTitle,
+  GameStatus
 } from '../basic'
 
 const ShowWord = (props) => {
@@ -29,11 +30,7 @@ const ShowWord = (props) => {
         <LobbyTitle>Your word is</LobbyTitle>
       </GridCell>
       <GridCell area={[1, 3, 2, 4]}>
-        <div>Players</div>
-        <div>
-          <strong>{player1.name}</strong> | <strong>{player2.name}</strong>
-        </div>
-        <div><span>{score}</span> pts | round {round} | phase {phase}</div>
+        <GameStatus {...props}/>
       </GridCell>
       <GridCell area={[2, 1, 4, 2]}>
         <RoundButton onClick={() => transition('GUESS')}>&#10003;</RoundButton>
@@ -41,9 +38,7 @@ const ShowWord = (props) => {
       </GridCell>
       <GridCell area={[2, 2, 4, 4]} place="center start"
         style={{fontSize: word.name.length > 15 ? '4vw' : '8vw'}}>
-        <span>
-          {word.name}
-        </span>
+        {word.name}
       </GridCell>
       {word.bonus && word.bonus > 0 ? (
         <Bonus>

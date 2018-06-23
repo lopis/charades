@@ -23,6 +23,16 @@ module.exports = {
             {
                 test: /\.json$/,
                 loader: 'json-loader'
+            },
+            {
+                test: /\.(ttf|eot|woff|woff2)$/,
+                include: [
+                  path.resolve('./app/assets/fonts')
+                ],
+                loader: 'file-loader',
+                options: {
+                  name: 'fonts/[name].[ext]'
+                }
             }
         ]
     },
