@@ -14,7 +14,7 @@ export const GameStatus = props => {
 
   return (
     <View>
-      <View>Players</View>
+      <View><Text>Players</Text></View>
       <View>
         <Bold>{player1.name}</Bold><Text>|</Text><Bold>{player2.name}</Bold>
       </View>

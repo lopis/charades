@@ -67,7 +67,7 @@ class GamePlayers extends PureComponent {
     const {machineState, onContinue, onQuit} = this.props
     const players = this.props.players || []
     return (
-      <GridLayout rows={[2, 8]} columns={[6]}>
+      <GridLayout rows={[2, 6, 2]} columns={[6, 4]}>
         <GridCell area={[1, 1, 2, 2]} place="start">
           <LobbyTitle>
             Who's playing?

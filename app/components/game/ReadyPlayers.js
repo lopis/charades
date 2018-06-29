@@ -5,7 +5,8 @@ import {
   GridCell,
   LobbyTitle,
   RoundButton,
-  PlayerVs
+  PlayerVs,
+  Box
 } from '../basic'
 
 class ReadyPlayers extends PureComponent {
@@ -22,10 +23,10 @@ class ReadyPlayers extends PureComponent {
           <LobbyTitle>Round {this.props.round}</LobbyTitle>
         </GridCell>
         <GridCell area={[2, 1, 3, 4]}>
-          Get Ready!
+          <Box>Get Ready!</Box>
           <PlayerVs player1={player1} player2={player2} />
         </GridCell>
-        <GridCell area={[4, 1, 3, 4]} place="end">
+        <GridCell area={[3, 1, 4, 4]} place="end">
           <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
           <RoundButton onClick={onContinue}>→</RoundButton>
         </GridCell>

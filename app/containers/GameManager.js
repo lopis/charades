@@ -32,7 +32,7 @@ class GameManager extends PureComponent {
   }
 
   componentDidTransition(prevStateMachine, event) {
-    console.log(`${prevStateMachine.value} > ${event} > ${this.props.machineState.value}`)
+    console.log(`Transition: ${prevStateMachine.value} > ${event} > ${this.props.machineState.value}`)
   }
 
   nextPhase = () => {

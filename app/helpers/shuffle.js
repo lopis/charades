@@ -12,7 +12,6 @@ function shuffle(a) {
     b[i] = b[j];
     b[j] = x;
   }
-  console.log(a, b);
 
   return b;
 }

@@ -9,7 +9,8 @@ import {
   RoundButton,
   Timer,
   LobbyTitle,
-  GameStatus
+  GameStatus,
+  Box
 } from '../basic'
 
 const ShowWord = (props) => {
@@ -38,14 +39,14 @@ const ShowWord = (props) => {
       </GridCell>
       <GridCell area={[2, 2, 4, 4]} place="center start"
         style={{fontSize: word.name.length > 15 ? '4vw' : '8vw'}}>
-        {word.name}
+        <Box>{word.name}</Box>
+        {word.bonus && word.bonus > 0 ? (
+          <Bonus>
+            {word.bonus}
+          </Bonus>
+        ) : null}
       </GridCell>
-      {word.bonus && word.bonus > 0 ? (
-        <Bonus>
-          {word.bonus}
-        </Bonus>
-      ) : ''}
-      <GridCell area={[3, 4, 4, 3]} place='end'>
+      <GridCell area={[2, 3, 4, 4]} place='end'>
         <Timer onTimeout={() => transition('TIMES_UP')}/>
       </GridCell>
     </GridLayout>

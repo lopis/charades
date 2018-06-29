@@ -6,6 +6,6 @@ const style = {
   fontSize: 20,
 }
 
-export const LobbyTitle = (props) => {
-  return <Text style={style} {...props}></Text>
+export const LobbyTitle = ({children, ...props}) => {
+  return <Text style={style} {...props}>{children}</Text>
 }

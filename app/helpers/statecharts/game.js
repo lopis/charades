@@ -5,7 +5,9 @@ const lastPhase = ({phase = 0}) => phase === 3
 
 const quitGameTransition = {
   QUIT_GAME: {
-    NOT_PLAYING: 'quitGame'
+    NOT_PLAYING: {
+      actions: ['quitGame']
+    }
   }
 }
 
