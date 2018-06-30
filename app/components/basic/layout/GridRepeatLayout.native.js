@@ -1,18 +1,24 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 
-function getCellStyles (style = {}, template = [1, 1]) {
+function getStyles (style = {}, template = [1, 1]) {
   return {
-    display: 'grid',
-    maxHeight: '100%',
-    gridTemplate: `repeat(${template[0]}, 1fr) / repeat(${template[1]}, 1fr)`,
+    display: 'flex',
+    position: "relative",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    height: '100%',
+    width: '100%',
+    padding: 5,
     ...style
   }
 }
 
-const GridRepeatLayout = ({style, template, children, ...props}) => {
+const GridRepeatLayout = ({style, template, ...props}) => {
   return (
-    <View {...props}/>
+    <ScrollView>
+      <View style={getStyles(style, template)} {...props}/>
+    </ScrollView>
   )
 }
 

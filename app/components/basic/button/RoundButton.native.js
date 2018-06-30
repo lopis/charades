@@ -2,9 +2,9 @@ import React from 'react'
 import {Text, TouchableNativeFeedback} from 'react-native'
 import s from 'styled-components'
 
-import { btn, btnBlue, btnText } from './styles'
+import { btnRound, btnBlue, btnText } from './styles'
 
-const _button = s.View`${btn}`
+const _button = s.View`${btnRound}`
 const _text = s.Text`${btnText}`
 
 const RoundButton = ({onClick, children, ...props}) => {
@@ -12,7 +12,7 @@ const RoundButton = ({onClick, children, ...props}) => {
     background={TouchableNativeFeedback.SelectableBackground()}
     onPress={onClick}>
     <_button {...props}>
-      <Text>{children}</Text>
+      <_text {...props}>{children}</_text>
     </_button>
   </TouchableNativeFeedback>
 }

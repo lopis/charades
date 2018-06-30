@@ -18,15 +18,15 @@ class ReadyPlayers extends PureComponent {
     }
 
     return (
-      <GridLayout columns={[2, 3, 5]} rows={[2, 6, 2]}>
-        <GridCell area={[1, 1, 2, 3]} place="start">
+      <GridLayout rows={[2, 6, 2]} columns={[6, 4]}>
+        <GridCell area={[1, 1, 2, 2]} place="center">
           <LobbyTitle>Round {this.props.round}</LobbyTitle>
         </GridCell>
-        <GridCell area={[2, 1, 3, 4]}>
+        <GridCell area={[2, 1, 3, 3]} place='center'>
           <Box>Get Ready!</Box>
           <PlayerVs player1={player1} player2={player2} />
         </GridCell>
-        <GridCell area={[3, 1, 4, 4]} place="end">
+        <GridCell area={[3, 2, 4, 3]}>
           <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
           <RoundButton onClick={onContinue}>→</RoundButton>
         </GridCell>

@@ -17,4 +17,4 @@ const Button = ({onClick, children, ...props}) => {
   </TouchableNativeFeedback>
 }
 
-export default Button
+export { Button }

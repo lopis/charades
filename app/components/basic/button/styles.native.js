@@ -19,16 +19,20 @@ const btn = css`
 
 const btnText = css`
   color: white
+  font-size: ${({small}) => small ? 25 : 55};
 `
 
 const btnRound = css`
-  color: white;
-  font-size: ${({small}) => small ? 16 : 20};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${props => getBackground(props)};
   height: ${({small}) => small ? '45px' : '75px'};
   width: ${({small}) => small ? '45px' : '75px'};
-  border-radius: 10vw;
-  margin: 0.5vw;
+  border-radius: 75px;
+  margin: 5px;
 `
 
 export { btn }
+export { btnText }
 export { btnRound }

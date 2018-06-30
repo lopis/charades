@@ -68,12 +68,12 @@ class GamePlayers extends PureComponent {
     const players = this.props.players || []
     return (
       <GridLayout rows={[2, 6, 2]} columns={[6, 4]}>
-        <GridCell area={[1, 1, 2, 2]} place="start">
+        <GridCell area={[1, 1, 2, 2]} place="center">
           <LobbyTitle>
             Who's playing?
           </LobbyTitle>
         </GridCell>
-        <GridCell area={[2, 1, 3, 3]} place='start' style={{maxHeight: '100%', overflow: 'auto'}}>
+        <GridCell area={[2, 1, 3, 3]} place='start'>
           <GridRepeatLayout template={[1, 3]}>
             {this.createForm(players)}
           </GridRepeatLayout>
@@ -89,7 +89,7 @@ class GamePlayers extends PureComponent {
         </GridCell>
         <GridCell area={[3, 2, 4, 3]}>
           <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
-          <RoundButton onClick={onContinue}>→</RoundButton>
+          <RoundButton onClick={onContinue}>&gt;</RoundButton>
         </GridCell>
       </GridLayout>
     )

@@ -39,7 +39,7 @@ class GameWordsComponent extends PureComponent {
     const {machineState, onContinue, onQuit} = this.props
     return (
       <GridLayout rows={[2, 6, 2]} columns={[6, 4]}>
-        <GridCell area={[1, 1, 2, 2]}>
+        <GridCell area={[1, 1, 2, 2]} place="center">
           <LobbyTitle>
             Pick a word pack
           </LobbyTitle>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import {View, Text, TextInput, StyleSheet} from 'react-native'
 
-import Button from '../../components/basic/button/Button'
+import { Button } from '../../components/basic/button/Button'
 
 export default class MenuLayout extends PureComponent {
   onChange = (value) => {
