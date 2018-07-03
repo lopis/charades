@@ -9,10 +9,10 @@
     "web": "webpack-dev-server --host 0.0.0.0 --config \"./config/web/webpack.config.js\"",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
-    "a": "yarn android",
-    "rn": "react-native",
     "stats": "webpack --config \"./config/web/webpack.config.js\" --json > stats.json",
-    "depbuild": "cd node_modules/react-automata; yarn install; yarn build; cd -"
+    "depbuild": "cd node_modules/react-automata; yarn install; yarn build; cd -",
+    "a": "yarn android",
+    "rn": "react-native"
   },
   "dependencies": {
     "babel-plugin-file-loader": "^1.0.0",
@@ -23,7 +23,7 @@
     "react": "^16.0.0",
     "react-automata": "MicheleBertoli/react-automata",
     "react-dom": "^16.0.0",
-    "react-native": "0.49.5",
+    "react-native": "^0.55.4",
     "react-redux": "^5.0.7",
     "react-transform-hmr": "^1.0.4",
     "redux": "^3.7.2",

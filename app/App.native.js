@@ -1,4 +1,5 @@
 import React from 'react'
+import { Image, Text, View } from 'react-native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
@@ -32,7 +33,12 @@ const App = connect(
 
 const AppContainer = () => (
   <Provider store={store}>
-    <App />
+    {/* <App /> */}
+    <View style={{borderColor: 'cyan', borderWidth: 5, height: '100%', width: '100%'}}>
+      <Image source={{uri: require('./assets/img/arrow.png')}}
+        resizeMode="contain"
+        style={{height: 100, width: 100, borderColor: 'red', borderWidth: 5}} />
+    </View>
   </Provider>
 )
 

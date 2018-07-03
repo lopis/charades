@@ -7,6 +7,7 @@ import {
   RoundButton,
   LobbyTitle,
   Button,
+  NextButton,
   PlayerLabel,
 } from '../basic'
 import {
@@ -89,7 +90,7 @@ class GamePlayers extends PureComponent {
         </GridCell>
         <GridCell area={[3, 2, 4, 3]}>
           <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
-          <RoundButton onClick={onContinue}>&gt;</RoundButton>
+          {/* <NextButton onClick={onContinue} /> */}
         </GridCell>
       </GridLayout>
     )

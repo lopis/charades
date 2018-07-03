@@ -12,7 +12,7 @@ const Button = ({onClick, children, ...props}) => {
     background={TouchableNativeFeedback.SelectableBackground()}
     onPress={onClick}>
     <_button {...props}>
-      <Text>{children}</Text>
+      <_text>{children}</_text>
     </_button>
   </TouchableNativeFeedback>
 }
