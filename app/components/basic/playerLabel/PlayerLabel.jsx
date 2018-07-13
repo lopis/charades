@@ -1,4 +1,5 @@
 import React from 'react'
+import { TouchableNativeFeedback } from 'react-native'
 import s from 'styled-components'
 
 import {container, name, badge, picture} from './styles'
@@ -10,15 +11,17 @@ const PlayerLabel = ({player, value, ...props}) => {
   const Picture = s.div`${picture}`
 
   return (
-    <Container {...props}>
-      <Picture />
-      <Name>
-        {player.name}
-      </Name>
-      {value !== undefined && (
-        <Badge>{value}</Badge>
-      )}
-    </Container>
+    <TouchableNativeFeedback>
+      <Container {...props}>
+        <Picture />
+        <Name>
+          {player.name}
+        </Name>
+        {value !== undefined && (
+          <Badge>{value}</Badge>
+        )}
+      </Container>
+ft3    </TouchableNativeFeedback>
   )
 }
 

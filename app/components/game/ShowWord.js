@@ -33,13 +33,16 @@ const ShowWord = (props) => {
       <GridCell area={[1, 3, 2, 4]}>
         <GameStatus {...props}/>
       </GridCell>
-      <GridCell area={[2, 1, 4, 2]}>
+      <GridCell area={[2, 1, 3, 2]} place="center end">
         <RoundButton onClick={() => transition('GUESS')}>&#10003;</RoundButton>
+      </GridCell>
+      <GridCell area={[3, 1, 4, 2]} place="center start">
         <RoundButton blue onClick={() => transition('SKIP')}>&times;</RoundButton>
       </GridCell>
-      <GridCell area={[2, 2, 4, 4]} place="center start"
-        style={{fontSize: word.name.length > 15 ? '4vw' : '8vw'}}>
-        <Box>{word.name}</Box>
+      <GridCell area={[2, 1, 3, 4]} place="center center">
+        <Box style={{fontSize: word.name.length > 17 ? 30 : 60}}>
+          {word.name}
+        </Box>
         {word.bonus && word.bonus > 0 ? (
           <Bonus>
             {word.bonus}

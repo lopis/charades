@@ -34,6 +34,10 @@ const picture = css`
   background: white;
   border-radius: 160px;
   margin: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 `
 
 export { container }

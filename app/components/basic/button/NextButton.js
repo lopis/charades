@@ -1,11 +1,14 @@
 import React from 'react'
-import { Image } from 'react-native'
+import css from 'styled-components'
+
+import arrow from './styles'
 import { RoundButton, Box } from '../../basic'
 
+
 const NextButton = props => {
-  return <Box {...props}>
-    {/* <Image source={require('./assets/arrow.png')} /> */}
-  </Box>
+  return <RoundButton {...props}>
+    🏁
+  </RoundButton>
 }
 
 export {NextButton}

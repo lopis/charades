@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 
 import {
-  VerticalLayout,
-  Button,
-  Header,
-  Header2,
-  Header3,
-  Bold
+  GridLayout,
+  GridCell,
+  LobbyTitle,
+  PlayerVs,
+  RoundButton,
+  NextButton
 } from '../basic'
 
 class RoundResults extends PureComponent {
@@ -14,21 +14,18 @@ class RoundResults extends PureComponent {
     const {player1, player2, score, onContinue, onQuit} = this.props
 
     return (
-      <VerticalLayout>
-        <Header>Time's up!</Header>
-        <Header2>
-          Players <Bold>{player1.name}</Bold> and <Bold>{player2.name}</Bold>
-        </Header2>
-        <Header3>
-          Your score was {score} points.
-        </Header3>
-        <Button onClick={onContinue}>
-          Next round
-        </Button>
-        <Button onClick={onQuit}>
-          Quit to menu
-        </Button>
-      </VerticalLayout>
+      <GridLayout rows={[2, 6, 2]} columns={[6, 4]}>
+        <GridCell area={[1, 1, 2, 3]} place="start">
+          <LobbyTitle>Time's up!</LobbyTitle>
+        </GridCell>
+        <GridCell area={[2, 1, 3, 3]} place='center'>
+          <PlayerVs player1={player1} player2={player2} score={score} />
+        </GridCell>
+        <GridCell area={[3, 2, 4, 3]}>
+          <RoundButton small blue onClick={onQuit}>&times;</RoundButton>
+          <NextButton onClick={onContinue} />
+        </GridCell>
+      </GridLayout>
     )
   }
 }

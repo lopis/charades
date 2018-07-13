@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import colors from '../../../constants/colors'
 
-const timer = css`
+const timerBody = css`
   height: 400px;
   width: 400px;
   border: 16px solid ${colors.darkest};
@@ -11,7 +11,13 @@ const timer = css`
 
 const text = css`
   font-size: 120px;
+  text-align: right;
   color: ${colors.darker};
+`
+
+const textContainer = css`
+  width: 50%;
+  padding-right: 15px;
 `
 
 const timerContainer = css`
@@ -20,6 +26,7 @@ const timerContainer = css`
   overflow: hidden;
 `
 
-export {timer}
+export {timerBody}
 export {text}
+export {textContainer}
 export {timerContainer}

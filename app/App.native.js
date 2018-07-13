@@ -4,6 +4,8 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
 import { AppRegistry } from 'react-native'
+import css from 'styled-components'
+import arrow from './assets/img/arrow.png'
 
 import './helpers/globalStyle'
 import { appStates } from './constants/appStates'
@@ -31,14 +33,26 @@ const App = connect(
   null
 )(AppFrame)
 
+const getCircularReplacer = () => {
+  const seen = new WeakSet;
+  return (key, value) => {
+    if (typeof value === "object" && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
+
+const jsone = obj => {
+  return null
+}
+
 const AppContainer = () => (
   <Provider store={store}>
-    {/* <App /> */}
-    <View style={{borderColor: 'cyan', borderWidth: 5, height: '100%', width: '100%'}}>
-      <Image source={{uri: require('./assets/img/arrow.png')}}
-        resizeMode="contain"
-        style={{height: 100, width: 100, borderColor: 'red', borderWidth: 5}} />
-    </View>
+    <App />
   </Provider>
 )
 

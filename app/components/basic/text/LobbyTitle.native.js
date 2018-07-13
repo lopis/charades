@@ -3,7 +3,8 @@ import { Text } from 'react-native'
 
 const style = {
   fontWeight: "bold",
-  fontSize: 20,
+  fontSize: 35,
+  margin: 10
 }
 
 export const LobbyTitle = ({children, ...props}) => {

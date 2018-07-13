@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import { Text } from 'react-native'
 import s from 'styled-components'
 
-import { timer, text, timerContainer } from './styles'
+import { timerBody, text, textContainer, timerContainer } from './styles'
 import { SECONDS_PER_ROUND } from '../../../constants/values'
 
 const START_TIME = SECONDS_PER_ROUND
@@ -10,7 +10,8 @@ const REFRESH_RATE = 1000
 const TICK = 1
 
 const TimerContainer = s.View`${timerContainer}`
-const TimerBody = s.View`${timer}`
+const TimerBody = s.View`${timerBody}`
+const TimerTextContainer = s.View`${textContainer}`
 const TimerText = s.Text`${text}`
 
 class Timer extends PureComponent {
@@ -54,7 +55,9 @@ class Timer extends PureComponent {
     return (
       <TimerContainer>
         <TimerBody>
-          <TimerText>{this.state.time}</TimerText>
+          <TimerTextContainer>
+            <TimerText>{this.state.time}</TimerText>
+          </TimerTextContainer>
         </TimerBody>
       </TimerContainer>
     )

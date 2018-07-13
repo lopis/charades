@@ -42,6 +42,7 @@ const GridLayout = ({columns = [], rows = [], children = [], ...props}) => {
       position: 'absolute',
       display: 'flex',
       flexDirection: 'row',
+      flexWrap: 'wrap',
       top: `${_rows[_area[0]] * 10}%`,
       left: `${_columns[_area[1]] * 10}%`,
       height: `${(_rows[_area[2]] - _rows[_area[0]]) * 10}%`,
@@ -49,7 +50,8 @@ const GridLayout = ({columns = [], rows = [], children = [], ...props}) => {
       overflow: 'hidden',
       justifyContent: _place[0] || undefined,
       alignItems: _place[1] || _place[0] || undefined,
-
+      padding: child.props.padding || 0,
+      // 
       // borderWidth: 1,
       // borderColor: 'red',
     }

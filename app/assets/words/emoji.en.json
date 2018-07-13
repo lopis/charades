@@ -2,6 +2,7 @@
   "name": "Emoji",
   "language": "en",
   "description": "Emoji",
+  "icon": "😜",
   "words": [
     "🐶 Dog",
     "🐱 Cat",

@@ -9,7 +9,6 @@ function getStyles (style = {}, template = [1, 1]) {
     alignItems: "flex-start",
     height: '100%',
     width: '100%',
-    padding: 5,
     ...style
   }
 }

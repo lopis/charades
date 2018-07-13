@@ -2,6 +2,7 @@
   "name": "Geography",
   "description": "Countries, Cities and regions of the world",
   "language": "en",
+  "icon": "🗺",
   "words": [
     "Afghanistan 🇦🇫",
     "Albania 🇦🇱",

@@ -1,12 +1,18 @@
 import React from 'react'
-import s from 'styled-components'
+import { TextInput as Input } from 'react-native'
+import colors from '../../../constants/colors'
 
-import { styles } from './styles'
+const style = {
+  width: '100%',
+  borderWidth: 2,
+  borderColor: colors.hightlight,
+  fontSize: 20,
+}
 
 const TextInput = ({autoFocus, ...props}) => {
-  const _input = s.TextInput`${styles}`
-
-  return <_input autoFocus={!!autoFocus} {...props}/>
+  return <Input style={style}
+    underlineColorAndroid="transparent"
+    autoFocus={!!autoFocus} {...props}/>
 }
 
 export { TextInput }
